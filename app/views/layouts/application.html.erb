@@ -12,7 +12,11 @@
   <body>
 
     <header>
-
+      <nav class="navbar navbar-light justify-content-end">
+        <% unless session[:user_id].blank? %>
+          <%= link_to '/logout', class: "btn btn-sm btn-outline-secondary" do %> logout <% end %>
+        <% end %>
+      </nav>
     </header>
 
     <main>
