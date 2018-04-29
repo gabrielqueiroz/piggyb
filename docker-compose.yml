@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - postgresql
+  postgresql:
+    image: postgres
+    environment:
+      POSTGRES_USER: piggyb
+      POSTGRES_PASSWORD: piggyb
+    ports:
+        - "5432:5432"
