@@ -1,24 +1,5 @@
-# README
+![](https://user-images.githubusercontent.com/4305837/39401430-889229ca-4b1b-11e8-8d6a-6ff20438ef8e.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# About
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+PiggyB is a web application and API that helps you organize and share your personal finance. Create piggy banks for you personal expenses and even share with a friend a common objective.
