@@ -1,12 +1,19 @@
 class UsersController < ApplicationController
 
+  rescue_from(ActionController::ParameterMissing) do |exception|
+    render json: { message: exception.message, params: [exception.param] }, status: :bad_request
+  end
+
   def create
     params.require(:user).permit!
 
     @user = User.new(params[:user])
     @user.save
 
-    redirect_to '/'
+    respond_to do |format|
+      format.html { redirect_to '/' }
+      format.json { render json: @user, status: 201 }
+    end
   end
 
 end
