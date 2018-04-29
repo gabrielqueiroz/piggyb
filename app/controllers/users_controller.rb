@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to '/' }
-      format.json { render json: @user, status: 201 }
+      format.json { render json: @user, except: :password_digest, status: 201 }
     end
   end
 

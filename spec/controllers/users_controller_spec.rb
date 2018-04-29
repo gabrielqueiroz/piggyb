@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe UsersController do
+describe UsersController do
 
   let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -22,7 +22,7 @@ RSpec.describe UsersController do
 
       it { expect(body[:name]).to eq "Gabriel Queiroz" }
       it { expect(body[:email]).to eq "gabriel.queiroz@test.com" }
-      it { expect(body[:password_digest]).not_to be_nil }
+      it { expect(body[:password_digest]).to be_nil }
       it { expect(response.status).to eq 201 }
     end
 
