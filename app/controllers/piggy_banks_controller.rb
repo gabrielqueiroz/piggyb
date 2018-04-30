@@ -5,7 +5,7 @@ class PiggyBanksController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @piggy_banks, status: 200 }
+      format.json { render json: @piggy_banks, except: :user_id, status: 200 }
     end
   end
 
@@ -19,7 +19,7 @@ class PiggyBanksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to '/piggy_banks' }
-      format.json { render json: @piggy_bank, status: 201 }
+      format.json { render json: @piggy_bank, except: :user_id, status: 201 }
     end
   end
 
