@@ -1,0 +1,2 @@
+class PiggyBank < ApplicationRecord
+end

@@ -1,7 +1,26 @@
-<div class="card">
-  <div class="card-body">
-    <p>
-       Showing pig all piggy banks for <%= @user.name %>
-    </p>
+<div class="d-flex justify-content-center pt-3">
+  <div class="col-md-8">
+
+    <div class="card">
+      <div class="card-body">
+        <% if @piggy_banks.blank? %>
+          <p> You don't have any Piggy Banks yet. Go ahead and create your first Piggy Bank </p>
+        <% else %>
+          <p> My PiggyBanks </p>
+          <% @piggy_banks.each do |pb| %>
+              <div class="card">
+                <div class="card-body">
+                  <h4><%= pb.name %></h4>
+                  <%= pb.currency %>
+                  <%= pb.balance %>
+                  <br/><%= link_to 'Edit', "/piggy_bank/#{pb.id}" %>
+                </div>
+              </div><br/>
+          <% end %>
+        <% end %>
+        <%= link_to 'Create a PiggyBank', new_piggy_bank_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+
   </div>
 </div>
