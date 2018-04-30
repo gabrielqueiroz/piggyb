@@ -7,7 +7,6 @@ class PiggyBanksController < ApplicationController
   def index
     @user = User.find(session[:user_id])
     @piggy_banks = PiggyBank.where(user_id: session[:user_id])
-    puts "-----> #{@piggy_banks.inspect}"
   end
 
   def create
@@ -21,5 +20,12 @@ class PiggyBanksController < ApplicationController
       format.html { redirect_to '/piggy_banks' }
       format.json { render json: @piggy_bank, except: :password_digest, status: 201 }
     end
+  end
+
+  def destroy
+    @piggy_bank = PiggyBank.find(params[:id])
+    @piggy_bank.destroy
+
+    redirect_to '/piggy_banks'
   end
 end

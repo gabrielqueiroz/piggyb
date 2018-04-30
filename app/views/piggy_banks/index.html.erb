@@ -11,8 +11,11 @@
               <div class="card">
                 <div class="card-body">
                   <h4><%= pb.name %></h4>
+                  <p><%= pb.description %></p>
                   <%= pb.currency %>
-                  <%= pb.balance %>
+                  Balance <%= pb.balance %> |
+                  Total credit <%= pb.total_credit %> |
+                  Total debit <%= pb.total_debit %>
                   <br/><%= link_to 'Edit', "/piggy_bank/#{pb.id}" %>
                 </div>
               </div><br/>

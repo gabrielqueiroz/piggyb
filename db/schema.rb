@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2018_04_29_220735) do
     t.string "name"
     t.string "currency"
     t.string "description"
-    t.integer "balance"
-    t.integer "total_credit"
-    t.integer "total_debit"
+    t.float "balance", default: 0.0
+    t.float "total_credit", default: 0.0
+    t.float "total_debit", default: 0.0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

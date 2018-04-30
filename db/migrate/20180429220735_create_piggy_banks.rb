@@ -4,9 +4,9 @@ class CreatePiggyBanks < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :currency
       t.string :description
-      t.integer :balance
-      t.integer :total_credit
-      t.integer :total_debit
+      t.float :balance,       default: 0.0
+      t.float :total_credit,  default: 0.0
+      t.float :total_debit,   default: 0.0
 
       t.belongs_to :user
 
