@@ -12,13 +12,19 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <div class="row">
-            <% unless session[:user_id].blank? %>
+          <% unless session[:user_id].blank? %>
+          <a class="navbar-brand" href="#">PiggyB</a>
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <%= link_to '/piggy_banks', class: "btn btn-sm" do %> My Piggy Banks <% end %>
+                </li>
+              </ul>
               <%= link_to '/logout', class: "btn btn-sm btn-outline-secondary" do %> logout <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </nav>
     </header>
