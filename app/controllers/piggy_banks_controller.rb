@@ -1,12 +1,12 @@
 class PiggyBanksController < ApplicationController
 
-  rescue_from(ActionController::ParameterMissing) do |exception|
-    render json: { message: exception.message, params: [exception.param] }, status: :bad_request
-  end
-
   def index
-    @user = User.find(session[:user_id])
-    @piggy_banks = PiggyBank.where(user_id: session[:user_id])
+    @piggy_banks = PiggyBank.where(user_id: current_user.id)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @piggy_banks, status: 200 }
+    end
   end
 
   def create
@@ -19,7 +19,7 @@ class PiggyBanksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to '/piggy_banks' }
-      format.json { render json: @piggy_bank, except: :password_digest, status: 201 }
+      format.json { render json: @piggy_bank, status: 201 }
     end
   end
 

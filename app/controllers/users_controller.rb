@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  rescue_from(ActionController::ParameterMissing) do |exception|
-    render json: { message: exception.message, params: [exception.param] }, status: :bad_request
-  end
-
   def create
     params.require(:user).permit!
 
