@@ -21,6 +21,11 @@ class MovementsController < ApplicationController
   def show
     @piggy_bank = PiggyBank.find(params[:piggy_bank_id])
     @movements = Movement.where(piggy_bank_id: params[:piggy_bank_id]).order(updated_at: :desc)
+
+    respond_to do |format|
+      format.html { }
+      format.json { render json: { piggy_bank: @piggy_bank, movements: @movements }, except: :user_id, status: 200 }
+    end
   end
 
   private
