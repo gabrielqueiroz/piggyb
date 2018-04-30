@@ -1,35 +1,65 @@
-<div class="row pt-3 justify-content-center">
-  <%= link_to '/', style: "text-decoration: none" do %>
-    <h1><span class="text-white">Piggy</span>•B</h1>
-  <% end %>
+<div class="container pt-5">
+  <h1 class="text-center">Piggy•B</h1>
 </div>
 
-<div class="d-flex justify-content-center pt-3">
+<div class="container pt-5">
+  <div class="row">
 
-  <div class="col-md-4">
-    <div class="card pt-3">
-      <div class="card-body">
-        <% if flash[:notice] %>
-          <div class="alert alert-danger" role="alert"> <%= flash.notice() %> </div>
-        <% end %>
+    <div class="col-md-6 text-center">
+      <p>
+        PiggyB is a Web Application and API that helps you organize and share your personal finance.
+      </p>
+      <p>
+        Create piggy banks for you personal expenses and even share with a friend a common objective.
+      </p>
+    </div>
 
-        <%= form_with scope: :login, url: '/login' do |form| %>
-          <div class="form-group">
-            <%= form.text_field :email, class: "form-control", placeholder: "email", required: true %>
-          </div>
-          <div class="form-group">
-            <%= form.text_field :password, class: "form-control", type: "password", placeholder: "password", required: true %>
-          </div>
+    <div class="col-md-6">
 
-          <div class="form-group">
-            <%= form.submit "Sign in", class: "btn btn-success btn-block" %>
+        <div class="card">
+          <div class="card-body">
+            <% if flash[:notice] %>
+              <div class="alert alert-danger" role="alert"> <%= flash.notice() %> </div>
+            <% end %>
+
+            <%= form_with scope: :login, url: '/login' do |form| %>
+              <div class="form-group">
+                <%= form.text_field :email, class: "form-control", placeholder: "email", required: true %>
+              </div>
+              <div class="form-group">
+                <%= form.text_field :password, class: "form-control", type: "password", placeholder: "password", required: true %>
+              </div>
+
+              <%= form.submit "Sign in", class: "btn btn-success btn-block" %>
+            <% end %>
           </div>
-        <% end %>
-        <div class="form-group">
-          <%= link_to "Sign up", new_user_path, class: "btn btn-primary btn-block" %>
         </div>
+
+        <div class="space">
+
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <%= form_with scope: :user, url: users_path do |form| %>
+              <div class="form-group">
+                <%= form.text_field :name, class: "form-control", placeholder: "name", required: true %>
+              </div>
+              <div class="form-group">
+                <%= form.text_field :email, class: "form-control", placeholder: "email", required: true  %>
+              </div>
+              <div class="form-group">
+                <%= form.text_field :password, class: "form-control", type: "password", placeholder: "password", required: true  %>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <%= form.text_field :password_confirmation, class: "form-control", type: "password", placeholder: "confirm password", required: true  %>
+              </div>
+
+              <%= form.submit "Sign up", class: "btn btn-primary btn-block" %>
+            <% end %>
+          </div>
       </div>
     </div>
-  </div>
 
 </div>

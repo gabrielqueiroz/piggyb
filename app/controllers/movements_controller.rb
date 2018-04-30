@@ -2,12 +2,6 @@ class MovementsController < ApplicationController
 
   before_action :verify_authenticity
 
-  def index
-  end
-
-  def new
-  end
-
   def create
     params.require(:piggy_banks_movement).permit!
 
@@ -15,7 +9,7 @@ class MovementsController < ApplicationController
     @movement.piggy_bank_id = params[:piggy_bank_id]
     @movement.save
 
-    redirect_to piggy_banks_path
+    redirect_to piggy_banks_movements_path
   end
 
   def show

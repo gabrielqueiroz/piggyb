@@ -1,34 +1,38 @@
-<div class="d-flex justify-content-center pt-3">
-  <div class="col-md-8">
-
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center">My Piggy Banks</h5>
-        <% if @piggy_banks.blank? %>
-          <p> You don't have any Piggy Banks yet. Go ahead and create your first Piggy Bank </p>
-        <% else %>
-          <% @piggy_banks.each do |pb| %>
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title"><%= pb.name %></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><%= pb.description %></h6>
-                  <h5 class="card-text">
-                    <span class="badge badge-dark"> Currency: <%= pb.currency %> </span>
-                    <span class="badge badge-secondary"> Balance: <%= pb.balance %> </span>
-                    <span class="badge badge-success"> Total Credit: <%= pb.total_credit %> </span>
-                    <span class="badge badge-danger"> Total Debit: <%= pb.total_debit %> </span>
-                  </h5>
-                  <%= link_to 'Edit', "/piggy_bank/#{pb.id}", class: "card-link" %>
-                  <%= link_to 'Destroy', piggy_bank_path(pb), method: :delete, data: { confirm: "Destroy piggy bank #{pb.name}?" }, class: "card-link"%>
-                  <%= link_to 'Make a movement', new_piggy_bank_movements_path(pb.id), class: "card-link" %>
-                  <%= link_to 'Details', piggy_bank_movements_path(pb.id), class: "card-link" %>
-                </div>
-              </div><br/>
-          <% end %>
-        <% end %>
-        <%= link_to 'Create a PiggyBank', new_piggy_bank_path, class: "btn btn-primary" %>
-      </div>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-6">
+        <h3>My Piggy Banks</h3>
     </div>
-
+    <div class="col-md-6 text-right">
+      <%= link_to 'Create a PiggyBank', new_piggy_bank_path, class: "btn btn-primary right" %>
+    </div>
   </div>
+</div>
+
+<div class="space">
+
+</div>
+
+<div class="container">
+  <% if @piggy_banks.blank? %>
+    <p> You don't have any Piggy Banks yet. Go ahead and create your first Piggy Bank </p>
+  <% else %>
+    <div class="row">
+      <% @piggy_banks.each do |piggy_bank| %>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: piggy_bank } %>
+            </div>
+            <div class="card-footer text-muted">
+              <%= link_to 'Edit', "/piggy_bank/#{piggy_bank.id}", class: "card-link" %>
+              <%= link_to 'Destroy', piggy_bank_path(piggy_bank), method: :delete, data: { confirm: "Destroy piggy bank #{piggy_bank.name}?" }, class: "card-link"%>
+              <%= link_to 'Manage', piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>

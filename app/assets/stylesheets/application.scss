@@ -13,8 +13,23 @@
  *= require_self
  */
  @import "bootstrap";
+ @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
-body {
-  height: 100%;
-  background: linear-gradient(to right, #e0ffba, #3ac2ff);
+html {
+  font-family: 'Comfortaa', cursive;
 }
+
+.space {
+  margin:0;
+  padding:0;
+  height:25px;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+// body {
+//   height: 100%;
+//   background: linear-gradient(to right, #e0ffba, #3ac2ff);
+// }

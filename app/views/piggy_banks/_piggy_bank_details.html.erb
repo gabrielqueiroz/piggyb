@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-5">
+    <h5 class="card-title"><%= piggy_bank.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= piggy_bank.description %></h6>
+  </div>
+  <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-3 text-nowrap small">
+          <%= piggy_bank.currency %>
+        </div>
+        <div class="col-md-9 text-nowrap text-right">
+          <h1><%= piggy_bank.balance %></h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 text-nowrap small">
+          <%= piggy_bank.currency %>
+        </div>
+        <div class="col-md-4 text-right">
+          <h5><%= piggy_bank.total_credit %></h5>
+        </div>
+        <div class="col-md-2 text-nowrap small">
+          <%= piggy_bank.currency %>
+        </div>
+        <div class="col-md-4 text-right">
+          <h5><%= piggy_bank.total_debit %><h5>
+        </div>
+      </div>
+  </div>
+</div>
