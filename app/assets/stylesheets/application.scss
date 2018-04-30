@@ -15,18 +15,25 @@
  @import "bootstrap";
  @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
-html {
+body {
   font-family: 'Comfortaa', cursive;
-}
-
-.space {
-  margin:0;
-  padding:0;
-  height:25px;
 }
 
 .fill-width {
   width: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+}
+
+.half-size {
+    width: 50%
 }
 
 // body {
