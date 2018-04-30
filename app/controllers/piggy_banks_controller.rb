@@ -14,6 +14,7 @@ class PiggyBanksController < ApplicationController
 
     @piggy_bank = PiggyBank.new(params[:piggy_bank])
     @piggy_bank.user_id = session[:user_id]
+    @piggy_bank.total_credit = @piggy_bank.balance
     @piggy_bank.save
 
     respond_to do |format|

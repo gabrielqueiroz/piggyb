@@ -3,20 +3,24 @@
 
     <div class="card">
       <div class="card-body">
+        <h5 class="card-title text-center">My Piggy Banks</h5>
         <% if @piggy_banks.blank? %>
           <p> You don't have any Piggy Banks yet. Go ahead and create your first Piggy Bank </p>
         <% else %>
-          <p> My PiggyBanks </p>
           <% @piggy_banks.each do |pb| %>
               <div class="card">
                 <div class="card-body">
-                  <h4><%= pb.name %></h4>
-                  <p><%= pb.description %></p>
-                  <%= pb.currency %>
-                  Balance <%= pb.balance %> |
-                  Total credit <%= pb.total_credit %> |
-                  Total debit <%= pb.total_debit %>
-                  <br/><%= link_to 'Edit', "/piggy_bank/#{pb.id}" %>
+                  <h5 class="card-title"><%= pb.name %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= pb.description %></h6>
+                  <h5 class="card-text">
+                    <span class="badge badge-dark"> Currency: <%= pb.currency %> </span>
+                    <span class="badge badge-secondary"> Balance: <%= pb.balance %> </span>
+                    <span class="badge badge-success"> Total Credit: <%= pb.total_credit %> </span>
+                    <span class="badge badge-danger"> Total Debit: <%= pb.total_debit %> </span>
+                  </h5>
+                  <%= link_to 'Edit', "/piggy_bank/#{pb.id}", class: "card-link" %>
+                  <%= link_to 'Destroy', piggy_bank_path(pb), method: :delete, data: { confirm: "Destroy piggy bank #{pb.name}?" }, class: "card-link"%>
+                  <%= link_to 'Make a movement', new_piggy_bank_movements_path(pb.id), class: "card-link" %>
                 </div>
               </div><br/>
           <% end %>
