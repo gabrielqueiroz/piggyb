@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PiggyBanksController do
 
-  context "List all PiggyBanks" do
+  context "index#PiggyBanks" do
     let(:session) { Hash.new }
     let(:authorization) { '' }
 
@@ -66,6 +66,22 @@ describe PiggyBanksController do
 
         it { expect(response.status).to eq 200 }
         it { expect(body).to be_empty }
+      end
+    end
+
+    context "raise exception when user not found" do
+      before do
+        request.env['HTTP_AUTHORIZATION'] = authorization
+        get :index, format: request_format, session: session
+      end
+
+      context "using basic auth" do
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('gabriel.queiroz@test.com','test') }
+        let(:request_format) { :json }
+        let(:body) { JSON.parse(response.body, symbolize_names: true) }
+
+        it { expect(response.status).to eq 404 }
+        it { expect(body[:message]).to eq "Couldn't find User" }
       end
     end
 
