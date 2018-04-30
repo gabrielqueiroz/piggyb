@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center pt-3">
+  <div class="col-md-8">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= @piggy_bank.name %></h5>
+        <% if @movements.blank? %>
+          <p> You don't have any Movements yet. Go ahead and create movements </p>
+        <% else %>
+          <% @movements.each do |mv| %>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= mv.name %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= mv.description %></h6>
+                  <h5 class="card-text">
+                    <span class="badge badge-dark"> Amount: <%= mv.amount %> </span>
+                    <span class="badge badge-secondary"> At: <%= mv.created_at %> </span>
+                  </h5>
+                  <%= link_to 'Destroy', piggy_bank_movements_path(mv), method: :delete, data: { confirm: "Destroy movement #{mv.name}?" }, class: "card-link"%>
+                </div>
+              </div><br/>
+          <% end %>
+        <% end %>
+        <%= link_to 'Create a PiggyBank', new_piggy_bank_movements_path(@piggy_bank.id), class: "btn btn-primary" %>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -18,6 +18,11 @@ class MovementsController < ApplicationController
     redirect_to piggy_banks_path
   end
 
+  def show
+    @piggy_bank = PiggyBank.find(params[:piggy_bank_id])
+    @movements = Movement.where(piggy_bank_id: params[:piggy_bank_id]).order(updated_at: :desc)
+  end
+
   private
   def verify_authenticity
     piggy_bank = PiggyBank.find(params[:piggy_bank_id])

@@ -21,6 +21,7 @@
                   <%= link_to 'Edit', "/piggy_bank/#{pb.id}", class: "card-link" %>
                   <%= link_to 'Destroy', piggy_bank_path(pb), method: :delete, data: { confirm: "Destroy piggy bank #{pb.name}?" }, class: "card-link"%>
                   <%= link_to 'Make a movement', new_piggy_bank_movements_path(pb.id), class: "card-link" %>
+                  <%= link_to 'Details', piggy_bank_movements_path(pb.id), class: "card-link" %>
                 </div>
               </div><br/>
           <% end %>
