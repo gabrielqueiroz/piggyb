@@ -49,6 +49,21 @@ describe UsersController do
       it { expect(response.status).to eq 400 }
     end
 
+    context "when password is different from confirmation" do
+      let(:params) {
+        { user: {
+            name: "Gabriel Queiroz",
+            email: "password@test.com",
+            password: "password",
+            password_confirmation: "different"
+          }
+        }
+      }
+
+      it { expect(body[:message]).to eq "Validation failed: Password confirmation doesn't match Password" }
+      it { expect(response.status).to eq 400 }
+    end
+
   end
 
 end
