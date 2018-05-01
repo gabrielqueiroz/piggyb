@@ -3,3 +3,12 @@
 # About
 
 PiggyB is a web application and API that helps you organize and share your personal finance. Create piggy banks for you personal expenses and even share with a friend a common objective.
+
+# Build and running
+
+## Docker
+
+- __Build Project:__ docker-compose build
+- __Build Project:__ docker-compose up
+- __Run database setup:__ docker-compose run --rm web rake db:setup
+- __Run database migrations:__ docker-compose run --rm web rake db:migrate
