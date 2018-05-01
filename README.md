@@ -16,9 +16,9 @@ The idea originally came from the concept of [Piggy Banks](https://en.wikipedia.
 ## Docker
 
 - Build Project: `docker-compose build`
-- Build Project: `docker-compose up`
 - Run database setup: `docker-compose run --rm web rake db:setup`
 - Run database migrations: `docker-compose run --rm web rake db:migrate`
+- Up Project: `docker-compose up`
 
 ## Local
 
