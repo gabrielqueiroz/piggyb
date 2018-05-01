@@ -46,7 +46,7 @@ describe PiggyBanksController do
 
     context "return an empty list of Piggy Banks" do
       let(:user) { create(:user, :random_email) }
-      
+
       before do
         request.env['HTTP_AUTHORIZATION'] = authorization
         get :index, format: request_format, session: session
@@ -77,7 +77,7 @@ describe PiggyBanksController do
       end
 
       context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('gabriel.queiroz@test.com','test') }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('user.not.found@test.com', 'test') }
         let(:request_format) { :json }
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -88,5 +88,35 @@ describe PiggyBanksController do
 
   end
 
+  context "POST /piggy_banks" do
+    let(:user) { create(:user, :random_email) }
+    before do
+      request.env['HTTP_AUTHORIZATION'] = authorization
+      post :create, params: params, format: request_format
+    end
+
+    context "when all necessary params are present" do
+      let(:params) {
+        {
+          piggy_bank: {
+            name: "Switch Games",
+            description: "My Switch Games",
+            currency: "CDN",
+            balance: 100.0
+          }
+        }
+      }
+      let(:request_format) { :json }
+      let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+      let(:body) { JSON.parse(response.body, symbolize_names: true) }
+
+      it { expect(response.status).to eq 201 }
+      it { expect(body).not_to be_nil }
+      it { expect(body[:name]).to eq 'Switch Games' }
+      it { expect(body[:description]).to eq 'My Switch Games' }
+      it { expect(body[:currency]).to eq 'CDN' }
+      it { expect(body[:balance]).to eq 100.0 }
+    end
+  end
 
 end
