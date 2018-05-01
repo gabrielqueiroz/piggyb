@@ -64,6 +64,21 @@ describe UsersController do
       it { expect(response.status).to eq 400 }
     end
 
+    context "when email is not valid" do
+      let(:params) {
+        { user: {
+            name: "Gabriel Queiroz",
+            email: "email-invalid",
+            password: "test",
+            password_confirmation: "test"
+          }
+        }
+      }
+
+      it { expect(body[:message]).to eq "Validation failed: Email is invalid" }
+      it { expect(response.status).to eq 400 }
+    end
+
   end
 
 end
