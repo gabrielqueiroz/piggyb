@@ -1,5 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe PiggyBank, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe PiggyBank, type: :model do
 end

@@ -1,6 +1,6 @@
 class Movement < ApplicationRecord
-
   before_save :update_piggy_bank
+  belongs_to :piggy_bank
 
   private
   def update_piggy_bank
