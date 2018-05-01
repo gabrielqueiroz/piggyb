@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
+  include Roar::Rails::ControllerAdditions
+  include Roar::Rails::ControllerAdditions::Render
 
   def create
     params.require(:user).permit!
 
-    @user = User.new(params[:user])
-    @user.save!
+    user = User.new(params[:user])
+    user.save!
 
     respond_to do |format|
       format.html do
-        session[:user_id] = @user.id
-        redirect_to '/piggy_banks'
+        session[:user_id] = user.id
+        redirect_to piggy_banks_path
       end
-      format.json { render json: @user, except: :password_digest, status: :created }
+      format.json { render json: user, status: :created }
     end
   end
 
