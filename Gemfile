@@ -16,6 +16,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 
 group :development, :test do
+  gem 'simplecov'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
