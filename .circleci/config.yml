@@ -1,0 +1,28 @@
+jobs:
+  builds:
+    docker:
+      - image: circleci/ruby:2.5.1
+        environment:
+          - PSQL_URL: postgresql
+      - image: circleci/postgres
+        environment:
+          - POSTGRES_USER: piggyb
+          - POSTGRES_PASSWORD: piggyb
+    working_directory: ~/piggyb
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: bundle install --jobs=$BUNDLE_JOBS --retry=$BUNDLE_RETRY
+      - run:
+          name: Set up database
+          command: |
+            bundle exec rake db:setup
+            bundle exec rake db:migrate
+      - run:
+          name: Run Tests
+          command: bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o /home/circleci/piggyb/coverage/junit.xml
+      - store_test_results:
+          path: /home/circleci/piggyb/coverage
+      - store_artifacts:
+          path: /home/circleci/piggyb/coverage
