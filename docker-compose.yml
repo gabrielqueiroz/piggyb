@@ -4,7 +4,9 @@ services:
     build: .
     ports:
       - "3000:3000"
-    links:
+    environment:
+      PSQL_URL: postgresql
+    depends_on:
       - postgresql
   postgresql:
     image: postgres

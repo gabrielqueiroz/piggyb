@@ -12,7 +12,7 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <% unless session[:user_id].blank? %>
           <a class="navbar-brand" href="#">PiggyB</a>
@@ -29,14 +29,11 @@
       </nav>
     </header>
 
-    <main>
+    <main class="wrapper">
       <%= yield %>
     </main>
 
     <footer class="footer">
-      <div class="container text-center small">
-        <span class="text-muted">Developed by <b>Gabriel Queiroz</b> • 2018</span>
-      </div>
     </footer>
 
   </body>
