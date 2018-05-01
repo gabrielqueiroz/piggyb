@@ -4,8 +4,9 @@ describe UsersController do
 
   let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
-  describe "Create a new user" do
+  describe "POST /users" do
     before do
+      create(:user)
       post :create, params: params, format: :json
     end
 
@@ -13,7 +14,7 @@ describe UsersController do
       let(:params) {
         { user: {
           name: "Gabriel Queiroz",
-          email: "gabriel.queiroz@test.com",
+          email: "unique.email@test.com",
           password: "test",
           password_confirmation: "test"
           }
@@ -21,7 +22,7 @@ describe UsersController do
       }
 
       it { expect(body[:name]).to eq "Gabriel Queiroz" }
-      it { expect(body[:email]).to eq "gabriel.queiroz@test.com" }
+      it { expect(body[:email]).to eq "unique.email@test.com" }
       it { expect(body[:password_digest]).to be_nil }
       it { expect(response.status).to eq 201 }
     end
@@ -30,6 +31,21 @@ describe UsersController do
       let(:params) { Hash.new }
 
       it { expect(body[:message]).to eq 'param is missing or the value is empty: user' }
+      it { expect(response.status).to eq 400 }
+    end
+
+    context "when email is already present " do
+      let(:params) {
+        { user: {
+            name: "Gabriel Queiroz",
+            email: "gabriel.queiroz@test.com",
+            password: "test",
+            password_confirmation: "test"
+          }
+        }
+      }
+
+      it { expect(body[:message]).to eq 'Validation failed: Email has already been taken' }
       it { expect(response.status).to eq 400 }
     end
 

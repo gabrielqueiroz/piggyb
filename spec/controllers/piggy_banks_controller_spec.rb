@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PiggyBanksController do
 
-  context "index#PiggyBanks" do
+  context "GET /piggy_banks" do
     let(:session) { Hash.new }
     let(:authorization) { '' }
 

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     params.require(:user).permit!
 
     @user = User.new(params[:user])
-    @user.save
+    @user.save!
 
     respond_to do |format|
       format.html do

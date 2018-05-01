@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     render json: { message: exception.message }, status: :not_found
   end
 
+  rescue_from ActiveRecord::RecordInvalid do |exception|
+    render json: { message: exception.message }, status: :bad_request
+  end
+
   def current_user
     case request.format
     when Mime[:json]
