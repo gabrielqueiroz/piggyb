@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::RecordInvalid do |exception|
-    render json: { message: exception.message }, status: :bad_request
+    respond_to do |format|
+      format.html { flash.notice = exception.message; redirect_to request.referrer }
+      format.json { render json: { message: exception.message }, status: :bad_request }
+    end
   end
 
   def current_user

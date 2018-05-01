@@ -9,7 +9,6 @@ class LoginsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/piggy_banks'
     else
-      puts "Email or Password invalid. Please try again"
       flash.notice = "Email or Password invalid. Please try again"
       redirect_to '/'
     end
