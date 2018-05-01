@@ -6,6 +6,9 @@ services:
       - "3000:3000"
     environment:
       DATABASE_URL: postgresql
+      DATABASE_NAME: piggyb
+      DATABASE_USERNAME: piggyb
+      DATABASE_PASSWORD: piggyb
     depends_on:
       - postgresql
   postgresql:

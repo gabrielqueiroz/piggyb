@@ -5,9 +5,9 @@ default: &default
   timeout: 5000
   host: <%= ENV['DATABASE_URL'] %>
   port: 5432
-  database: piggyb
-  username: piggyb
-  password: piggyb
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
