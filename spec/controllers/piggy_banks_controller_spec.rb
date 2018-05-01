@@ -119,4 +119,31 @@ describe PiggyBanksController do
     end
   end
 
+  context "PUT /piggy_banks" do
+    let(:piggy_bank) { create(:piggy_bank) }
+    let(:user) { piggy_bank.user }
+
+    before do
+      request.env['HTTP_AUTHORIZATION'] = authorization
+      put :update, params: params, format: request_format
+    end
+
+    context "update using basic auth" do
+      let(:params) {
+        {
+          id: piggy_bank.id,
+          piggy_bank: { description: "Updated description" }
+        }
+      }
+      let(:request_format) { :json }
+      let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+      let(:body) { JSON.parse(response.body, symbolize_names: true) }
+
+      it { expect(response.status).to eq 200 }
+      it { expect(body).not_to be_nil }
+      it { expect(body[:description]).to eq 'Updated description' }
+    end
+
+  end
+
 end
