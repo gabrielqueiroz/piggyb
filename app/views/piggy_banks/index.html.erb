@@ -21,7 +21,7 @@
               <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: piggy_bank } %>
             </div>
             <div class="card-footer text-muted">
-              <%= link_to 'Edit', "/piggy_bank/#{piggy_bank.id}", class: "card-link" %>
+              <%= link_to 'Edit', edit_piggy_bank_path(piggy_bank), class: "card-link" %>
               <%= link_to 'Destroy', piggy_bank_path(piggy_bank), method: :delete, data: { confirm: "Destroy piggy bank #{piggy_bank.name}?" }, class: "card-link"%>
               <%= link_to 'Manage', piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
             </div>
