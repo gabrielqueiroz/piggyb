@@ -17,6 +17,7 @@ gem 'figaro'
 
 group :development, :test do
   gem 'simplecov'
+  gem 'codecov'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
