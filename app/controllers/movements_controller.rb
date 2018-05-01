@@ -9,7 +9,7 @@ class MovementsController < ApplicationController
     @movement.piggy_bank_id = params[:piggy_bank_id]
     @movement.save
 
-    redirect_to piggy_banks_movements_path
+    redirect_to request.referrer
   end
 
   def show
