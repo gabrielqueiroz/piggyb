@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :piggy_bank, class: PiggyBank do
-    id 1
     name 'PS4 Games'
     currency 'CAD'
     description 'My PS4 Games'
@@ -8,6 +7,6 @@ FactoryBot.define do
     total_credit 300.0
     total_debit 100.0
 
-    user_id 1
+    association :user, factory: [:user, :random_email]
   end
 end

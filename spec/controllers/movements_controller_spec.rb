@@ -5,21 +5,20 @@ describe MovementsController do
   context "GET /piggy_banks/:id/movements" do
     let(:session) { Hash.new }
     let(:authorization) { '' }
+    let(:movement) { create(:movement) }
+    let(:piggy_bank) { movement.piggy_bank }
+    let(:user) { piggy_bank.user }
 
     context "when there is movements for piggy bank" do
-      let(:params) { { piggy_bank_id: 1 } }
+      let(:params) { { piggy_bank_id: piggy_bank.id } }
 
       before do
-        create(:user)
-        create(:piggy_bank)
-        create(:movement)
-
         request.env['HTTP_AUTHORIZATION'] = authorization
         get :show, format: request_format, params: params, session: session
       end
 
       context "using session" do
-        let(:session) { { user_id: 1 } }
+        let(:session) { { user_id: user.id } }
         let(:request_format) { :html }
 
         it { expect(subject).to render_template(:show) }
@@ -30,7 +29,7 @@ describe MovementsController do
       end
 
       context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('gabriel.queiroz@test.com','test') }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
         let(:request_format) { :json }
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 

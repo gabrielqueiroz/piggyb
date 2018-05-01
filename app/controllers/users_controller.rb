@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to '/piggy_banks'
       end
-      format.json { render json: @user, except: :password_digest, status: 201 }
+      format.json { render json: @user, except: :password_digest, status: :created }
     end
   end
 

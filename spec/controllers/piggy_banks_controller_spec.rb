@@ -5,17 +5,17 @@ describe PiggyBanksController do
   context "GET /piggy_banks" do
     let(:session) { Hash.new }
     let(:authorization) { '' }
+    let(:piggy_bank) { create(:piggy_bank) }
+    let(:user) { piggy_bank.user }
 
     context "return a list of Piggy Banks" do
       before do
-        create(:user)
-        create(:piggy_bank)
         request.env['HTTP_AUTHORIZATION'] = authorization
         get :index, format: request_format, session: session
       end
 
       context "using session" do
-        let(:session) { { user_id: 1 } }
+        let(:session) { { user_id: piggy_bank.user_id } }
         let(:request_format) { :html }
 
         it { expect(subject).to render_template(:index) }
@@ -29,7 +29,7 @@ describe PiggyBanksController do
       end
 
       context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('gabriel.queiroz@test.com','test') }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
         let(:request_format) { :json }
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -45,14 +45,15 @@ describe PiggyBanksController do
     end
 
     context "return an empty list of Piggy Banks" do
+      let(:user) { create(:user, :random_email) }
+      
       before do
-        create(:user)
         request.env['HTTP_AUTHORIZATION'] = authorization
         get :index, format: request_format, session: session
       end
 
       context "using session" do
-        let(:session) { { user_id: 1 } }
+        let(:session) { { user_id: user.id } }
         let(:request_format) { :html }
 
         it { expect(subject).to render_template(:index) }
@@ -60,7 +61,7 @@ describe PiggyBanksController do
       end
 
       context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('gabriel.queiroz@test.com','test') }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
         let(:request_format) { :json }
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
