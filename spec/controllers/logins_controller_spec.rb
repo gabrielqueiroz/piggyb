@@ -37,4 +37,16 @@ describe LoginsController do
       it { expect(response).to redirect_to root_path }
     end
   end
+
+  context "DELETE /logins" do
+    before do
+      delete :destroy, format: :html
+    end
+
+    context "clean user session" do
+      it { expect(session[:user_id]).to be_nil }
+      it { expect(response).to redirect_to root_path }
+    end
+  end
+
 end

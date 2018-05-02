@@ -119,19 +119,41 @@ describe PiggyBanksController do
             name: "Switch Games",
             description: "My Switch Games",
             currency: "CDN",
-            balance: 100.0
+            balance: balance
           }
         }
       end
-      let(:authorization) { encode_credentials(user.email, user.password) }
-      let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
-      it { expect(response.status).to eq 201 }
-      it { expect(body).not_to be_nil }
-      it { expect(body[:name]).to eq 'Switch Games' }
-      it { expect(body[:description]).to eq 'My Switch Games' }
-      it { expect(body[:currency]).to eq 'CDN' }
-      it { expect(body[:balance]).to eq 100.0 }
+      context "and balance initialize with credit" do
+        let(:balance) { 100.0 }
+        let(:authorization) { encode_credentials(user.email, user.password) }
+        let(:body) { JSON.parse(response.body, symbolize_names: true) }
+
+        it { expect(response.status).to eq 201 }
+        it { expect(body).not_to be_nil }
+        it { expect(body[:name]).to eq 'Switch Games' }
+        it { expect(body[:description]).to eq 'My Switch Games' }
+        it { expect(body[:currency]).to eq 'CDN' }
+        it { expect(body[:balance]).to eq 100.0 }
+        it { expect(body[:total_credit]).to eq 100.0 }
+        it { expect(body[:total_debit]).to eq 0.0 }
+      end
+
+      context "and balance initialize with debit" do
+        let(:balance) { -100.0 }
+        let(:authorization) { encode_credentials(user.email, user.password) }
+        let(:body) { JSON.parse(response.body, symbolize_names: true) }
+
+        it { expect(response.status).to eq 201 }
+        it { expect(body).not_to be_nil }
+        it { expect(body[:name]).to eq 'Switch Games' }
+        it { expect(body[:description]).to eq 'My Switch Games' }
+        it { expect(body[:currency]).to eq 'CDN' }
+        it { expect(body[:balance]).to eq -100.0 }
+        it { expect(body[:total_credit]).to eq 0.0 }
+        it { expect(body[:total_debit]).to eq 100.0 }
+      end
+
     end
   end
 
