@@ -182,6 +182,19 @@ describe PiggyBanksController do
       it { expect(response.status).to eq 200 }
       it { expect(response.body).to eq 'Piggy Bank deleted' }
     end
+
+    context "raises exception when user does not have piggy bank" do
+      let(:request_format) { :json }
+      let(:random_user) { create(:user, :random_email) }
+      let(:params) do
+        { id: piggy_bank.id }
+      end
+      let(:authorization) { encode_credentials('gabriel.queiroz@test.com', 'test') }
+      let(:body) { JSON.parse(response.body, symbolize_names: true) }
+
+      it { expect(response.status).to eq 404 }
+      it { expect(body[:message]).to eq "Couldn't find PiggyBank" }
+    end
   end
 
 end
