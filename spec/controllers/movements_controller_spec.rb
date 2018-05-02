@@ -67,18 +67,35 @@ describe MovementsController do
         	piggy_banks_movement: {
         		name: "Uncharted 4",
         		description: "Bought online at PSN",
-        		amount: -60
+        		amount: amount
         	}
         }
       end
       let(:authorization) { encode_credentials(user.email, user.password) }
       let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
-      it { expect(response.status).to eq 201 }
-      it { expect(body).not_to be_nil }
-      it { expect(body[:name]).to eq 'Uncharted 4' }
-      it { expect(body[:description]).to eq 'Bought online at PSN' }
-      it { expect(body[:amount]).to eq -60 }
+      context "and amount is a credit" do
+        let(:amount) { 60.0 }
+
+        it { expect(response.status).to eq 201 }
+        it { expect(body).not_to be_nil }
+        it { expect(body[:piggy_bank][:total_credit]).to eq 260.0 }
+        it { expect(body[:movement][:name]).to eq 'Uncharted 4' }
+        it { expect(body[:movement][:description]).to eq 'Bought online at PSN' }
+        it { expect(body[:movement][:amount]).to eq 60 }
+      end
+
+      context "and amount is a debit" do
+        let(:amount) { -60.0 }
+
+        it { expect(response.status).to eq 201 }
+        it { expect(body).not_to be_nil }
+        it { expect(body[:piggy_bank][:total_debit]).to eq 60.0 }
+        it { expect(body[:movement][:name]).to eq 'Uncharted 4' }
+        it { expect(body[:movement][:description]).to eq 'Bought online at PSN' }
+        it { expect(body[:movement][:amount]).to eq -60 }
+      end
+
     end
   end
 

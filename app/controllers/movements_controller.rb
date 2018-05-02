@@ -9,7 +9,7 @@ class MovementsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: @movement, status: :created }
+      format.json { render json: { piggy_bank: @movement.piggy_bank, movement: @movement }, except: [:user_id], status: :created }
     end
   end
 
