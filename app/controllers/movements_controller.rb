@@ -7,7 +7,10 @@ class MovementsController < ApplicationController
     @movement.piggy_bank_id = params[:piggy_bank_id]
     @movement.save
 
-    redirect_to request.referrer
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { render json: @movement, status: :created }
+    end
   end
 
   def show
