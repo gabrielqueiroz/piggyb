@@ -6,7 +6,7 @@ FactoryBot.define do
     password_confirmation 'test'
 
     trait :random_email do
-      sequence(:email) { |n| "gabriel.queiroz#{n}@test.com" }
+      email "#{SecureRandom.hex}@test.com"
     end
   end
 end

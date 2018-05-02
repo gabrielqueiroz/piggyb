@@ -8,17 +8,24 @@ describe PiggyBanksController do
     let(:piggy_bank) { create(:piggy_bank) }
     let(:user) { piggy_bank.user }
 
-    context "return a list of Piggy Banks" do
-      before do
-        request.env['HTTP_AUTHORIZATION'] = authorization
-        get :index, format: request_format, session: session
-      end
+    before do
+      request.env['HTTP_AUTHORIZATION'] = authorization
+      get :index, format: request_format, session: session
+    end
 
-      context "using session" do
-        let(:session) { { user_id: piggy_bank.user_id } }
+    context "when return a list of Piggy Banks" do
+
+      context "using HTML format" do
         let(:request_format) { :html }
+        let(:session) do
+          { user_id: piggy_bank.user_id }
+        end
 
         it { expect(subject).to render_template(:index) }
+        it { expect(assigns(:summary)).not_to be_nil }
+        it { expect(assigns(:summary).sum_of_balance).to eq 200.0 }
+        it { expect(assigns(:summary).sum_of_credit).to eq 300.0 }
+        it { expect(assigns(:summary).sum_of_debit).to eq 100.0 }
         it { expect(assigns(:piggy_banks)).not_to be_nil }
         it { expect(assigns(:piggy_banks).first.name).to eq 'PS4 Games' }
         it { expect(assigns(:piggy_banks).first.currency).to eq 'CAD' }
@@ -28,57 +35,63 @@ describe PiggyBanksController do
         it { expect(assigns(:piggy_banks).first.total_debit).to eq 100.0 }
       end
 
-      context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+      context "using JSON format" do
         let(:request_format) { :json }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
         it { expect(response.status).to eq 200 }
-        it { expect(body.first[:name]).to eq 'PS4 Games' }
-        it { expect(body.first[:currency]).to eq 'CAD' }
-        it { expect(body.first[:description]).to eq 'My PS4 Games' }
-        it { expect(body.first[:balance]).to eq 200.0 }
-        it { expect(body.first[:total_credit]).to eq 300.0 }
-        it { expect(body.first[:total_debit]).to eq 100.0 }
+        it { expect(body[:summary]).not_to be_nil }
+        it { expect(body[:summary][:sum_of_balance]).to eq 200.0 }
+        it { expect(body[:summary][:sum_of_credit]).to eq 300.0 }
+        it { expect(body[:summary][:sum_of_debit]).to eq 100.0 }
+        it { expect(body[:piggy_banks].first[:name]).to eq 'PS4 Games' }
+        it { expect(body[:piggy_banks].first[:currency]).to eq 'CAD' }
+        it { expect(body[:piggy_banks].first[:description]).to eq 'My PS4 Games' }
+        it { expect(body[:piggy_banks].first[:balance]).to eq 200.0 }
+        it { expect(body[:piggy_banks].first[:total_credit]).to eq 300.0 }
+        it { expect(body[:piggy_banks].first[:total_debit]).to eq 100.0 }
       end
 
     end
 
-    context "return an empty list of Piggy Banks" do
+    context "when return an empty list of Piggy Banks" do
       let(:user) { create(:user, :random_email) }
 
-      before do
-        request.env['HTTP_AUTHORIZATION'] = authorization
-        get :index, format: request_format, session: session
-      end
-
-      context "using session" do
-        let(:session) { { user_id: user.id } }
+      context "using HTML format" do
         let(:request_format) { :html }
+        let(:session) do
+          { user_id: user.id }
+        end
 
         it { expect(subject).to render_template(:index) }
+        it { expect(assigns(:summary)).not_to be_nil }
+        it { expect(assigns(:summary).sum_of_balance).to eq 0 }
+        it { expect(assigns(:summary).sum_of_credit).to eq 0 }
+        it { expect(assigns(:summary).sum_of_debit).to eq 0 }
         it { expect(assigns(:piggy_banks)).to be_empty }
       end
 
-      context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+      context "using JSON format" do
         let(:request_format) { :json }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
         it { expect(response.status).to eq 200 }
-        it { expect(body).to be_empty }
+        it { expect(body[:summary][:sum_of_balance]).to eq 0 }
+        it { expect(body[:summary][:sum_of_credit]).to eq 0 }
+        it { expect(body[:summary][:sum_of_debit]).to eq 0 }
+        it { expect(body[:piggy_banks]).to be_empty }
       end
     end
 
     context "raise exception when user not found" do
-      before do
-        request.env['HTTP_AUTHORIZATION'] = authorization
-        get :index, format: request_format, session: session
-      end
 
-      context "using basic auth" do
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('user.not.found@test.com', 'test') }
+      context "using JSON format" do
         let(:request_format) { :json }
+        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('user.not.found@test.com', 'test') }
+
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
         it { expect(response.status).to eq 404 }
@@ -90,13 +103,15 @@ describe PiggyBanksController do
 
   context "POST /piggy_banks" do
     let(:user) { create(:user, :random_email) }
+
     before do
       request.env['HTTP_AUTHORIZATION'] = authorization
       post :create, params: params, format: request_format
     end
 
     context "when all necessary params are present" do
-      let(:params) {
+      let(:request_format) { :json }
+      let(:params) do
         {
           piggy_bank: {
             name: "Switch Games",
@@ -105,8 +120,7 @@ describe PiggyBanksController do
             balance: 100.0
           }
         }
-      }
-      let(:request_format) { :json }
+      end
       let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
       let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -128,14 +142,15 @@ describe PiggyBanksController do
       put :update, params: params, format: request_format
     end
 
-    context "update using basic auth" do
-      let(:params) {
+    context "update piggy bank description" do
+      let(:request_format) { :json }
+      let(:params) do
         {
           id: piggy_bank.id,
           piggy_bank: { description: "Updated description" }
         }
-      }
-      let(:request_format) { :json }
+      end
+
       let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
       let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
