@@ -185,15 +185,14 @@ describe PiggyBanksController do
 
     context "raises exception when user does not have piggy bank" do
       let(:request_format) { :json }
-      let(:random_user) { create(:user, :random_email) }
       let(:params) do
         { id: piggy_bank.id }
       end
-      let(:authorization) { encode_credentials('gabriel.queiroz@test.com', 'test') }
+      let(:authorization) { encode_credentials('user.not.found@test.com', 'test') }
       let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
       it { expect(response.status).to eq 404 }
-      it { expect(body[:message]).to eq "Couldn't find PiggyBank" }
+      it { expect(body[:message]).to eq "Couldn't find User" }
     end
   end
 
