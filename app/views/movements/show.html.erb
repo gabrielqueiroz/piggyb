@@ -52,8 +52,8 @@
                     <h6 class="card-subtitle mb-2 text-muted"><%= mv.description %></h6>
                     <h6> <%= mv.created_at.strftime("%m/%d/%Y at %I:%M%p") %> </h6>
                   </div>
-                  <div class="col-md-2 small">
-                    <%= link_to 'Destroy', piggy_bank_movements_path(mv), method: :delete, data: { confirm: "Destroy movement #{mv.name}?" }, class: "card-link"%>
+                  <div class="col-md-2 smal.,vl">
+                    <%= link_to 'Destroy', piggy_bank_movements_path(movement_id: mv.id), method: :delete, data: { confirm: "Destroy movement #{mv.name}?" }, class: "card-link"%>
                   </div>
                 </div>
               </div>

@@ -1,13 +1,16 @@
 class Movement < ApplicationRecord
-  before_save :update_piggy_bank
-  belongs_to :piggy_bank
+  before_save     :increase_piggy_bank
+  before_destroy  :decrease_piggy_bank
+
+  belongs_to      :piggy_bank
 
   private
-  def update_piggy_bank
-    piggy_bank = PiggyBank.find(piggy_bank_id)
-    piggy_bank.balance += amount
-    amount > 0 ? piggy_bank.total_credit += amount : piggy_bank.total_debit += amount
-    piggy_bank.save
+  def increase_piggy_bank
+    piggy_bank.on_movement_create(amount)
+  end
+
+  def decrease_piggy_bank
+    piggy_bank.on_movement_destroy(amount)
   end
 
 end
