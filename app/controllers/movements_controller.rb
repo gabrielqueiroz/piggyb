@@ -20,9 +20,4 @@ class MovementsController < ApplicationController
     end
   end
 
-  private
-  def verify_authenticity
-    piggy_bank = PiggyBank.find(params[:piggy_bank_id])
-    piggy_bank.present? && piggy_bank.user_id == session[:user_id]
-  end
 end

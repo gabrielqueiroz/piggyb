@@ -35,16 +35,9 @@ describe UsersController do
     end
 
     context "when email has already been taken" do
-      let(:user) { create(:user) }
+      let(:user) { create(:user, :random_email) }
       let(:params) do
-        {
-          user: {
-            name: "Gabriel Queiroz",
-            email: "gabriel.queiroz@test.com",
-            password: "test",
-            password_confirmation: "test"
-          }
-        }
+        { user: user.as_json }
       end
 
       it { expect(body[:message]).to eq 'Validation failed: Email has already been taken' }
