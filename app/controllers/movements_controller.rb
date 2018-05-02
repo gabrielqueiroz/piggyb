@@ -16,7 +16,7 @@ class MovementsController < ApplicationController
 
     respond_to do |format|
       format.html { }
-      format.json { render json: { piggy_bank: @piggy_bank, movements: @movements }, except: :user_id, status: :ok }
+      format.json { render json: { piggy_bank: @piggy_bank, movements: @movements }, except: [:user_id, :piggy_bank_id], status: :ok }
     end
   end
 

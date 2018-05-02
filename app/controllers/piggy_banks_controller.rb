@@ -5,7 +5,7 @@ class PiggyBanksController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: { summary: @summary, piggy_banks: @piggy_banks }, except: [:id, :user_id], status: :ok }
+      format.json { render json: { summary: @summary, piggy_banks: @piggy_banks }, except: :user_id, status: :ok }
     end
   end
 
@@ -19,7 +19,7 @@ class PiggyBanksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to piggy_banks_path }
-      format.json { render json: @piggy_bank, except: [:id, :user_id], status: :created }
+      format.json { render json: @piggy_bank, except: :user_id, status: :created }
     end
   end
 
@@ -34,7 +34,7 @@ class PiggyBanksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to piggy_banks_path }
-      format.json { render json: @piggy_bank, except: [:id, :user_id], status: :ok }
+      format.json { render json: @piggy_bank, except: :user_id, status: :ok }
     end
   end
 

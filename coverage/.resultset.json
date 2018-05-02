@@ -289,11 +289,14 @@
         1,
         null,
         1,
+        null,
+        1,
         1,
         11,
-        11,
-        11,
-        11,
+        null,
+        null,
+        1,
+        0,
         null,
         null,
         null
@@ -320,6 +323,27 @@
       "/Users/gabriel.queiroz/Github/piggyb/app/models/piggy_bank.rb": [
         1,
         1,
+        null,
+        1,
+        11,
+        11,
+        0,
+        null,
+        11,
+        null,
+        11,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
         null
       ],
       "/Users/gabriel.queiroz/Github/piggyb/spec/factories/user.rb": [
@@ -531,6 +555,16 @@
         11,
         11,
         17,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
         null,
         null,
         null,
@@ -937,6 +971,6 @@
         null
       ]
     },
-    "timestamp": 1525224711
+    "timestamp": 1525232622
   }
 }
