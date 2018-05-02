@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include Roar::Rails::ControllerAdditions
-  include Roar::Rails::ControllerAdditions::Render
 
   def create
     params.require(:user).permit!
@@ -13,7 +11,7 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect_to piggy_banks_path
       end
-      format.json { render json: user, status: :created }
+      format.json { render json: user, except: [:id, :password_digest], status: :created }
     end
   end
 

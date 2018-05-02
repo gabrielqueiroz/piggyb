@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include ActionController::HttpAuthentication::Basic
+
 describe PiggyBanksController do
 
   context "GET /piggy_banks" do
@@ -37,7 +39,7 @@ describe PiggyBanksController do
 
       context "using JSON format" do
         let(:request_format) { :json }
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+        let(:authorization) { encode_credentials(user.email, user.password) }
 
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -75,7 +77,7 @@ describe PiggyBanksController do
 
       context "using JSON format" do
         let(:request_format) { :json }
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+        let(:authorization) { encode_credentials(user.email, user.password) }
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
         it { expect(response.status).to eq 200 }
@@ -90,7 +92,7 @@ describe PiggyBanksController do
 
       context "using JSON format" do
         let(:request_format) { :json }
-        let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials('user.not.found@test.com', 'test') }
+        let(:authorization) { encode_credentials('user.not.found@test.com', 'test') }
 
         let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
@@ -121,7 +123,7 @@ describe PiggyBanksController do
           }
         }
       end
-      let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+      let(:authorization) { encode_credentials(user.email, user.password) }
       let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
       it { expect(response.status).to eq 201 }
@@ -151,7 +153,7 @@ describe PiggyBanksController do
         }
       end
 
-      let(:authorization) { ActionController::HttpAuthentication::Basic.encode_credentials(user.email, user.password) }
+      let(:authorization) { encode_credentials(user.email, user.password) }
       let(:body) { JSON.parse(response.body, symbolize_names: true) }
 
       it { expect(response.status).to eq 200 }
