@@ -20,4 +20,14 @@ class MovementsController < ApplicationController
     end
   end
 
+  def destroy
+    @movement = Movement.joins(:piggy_bank).find_by!('piggy_banks.id': params[:piggy_bank_id], 'piggy_banks.user': current_user.id, 'movements.id': params[:movement_id])
+    @movement.destroy
+
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { render json: "Movement deleted", status: :ok }
+    end
+  end
+
 end
