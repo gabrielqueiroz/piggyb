@@ -1,4 +1,4 @@
-![](https://user-images.githubusercontent.com/4305837/39401430-889229ca-4b1b-11e8-8d6a-6ff20438ef8e.png)
+[<img src="https://user-images.githubusercontent.com/4305837/39401430-889229ca-4b1b-11e8-8d6a-6ff20438ef8e.png">](http://piggyb.herokuapp.com)
 
 [![CircleCI](https://circleci.com/bb/gabrielqueiroz/piggyb.svg?style=svg&circle-token=fcf5b3e2909c0a90ad79a5b6c9cc9ec06e67409d)](https://circleci.com/bb/gabrielqueiroz/piggyb)
 [![codecov](https://codecov.io/bb/gabrielqueiroz/piggyb/branch/master/graph/badge.svg?token=r55jC2x5G8)](https://codecov.io/bb/gabrielqueiroz/piggyb)
@@ -7,6 +7,8 @@
 
 PiggyB is a Web Application and API that helps you organize your personal finance.
 Create Piggy Banks for you personal savings, control your expenses and reach your goals.
+
+Check the app at http://piggyb.herokuapp.com.
 
 # Concept Idea
 
@@ -45,7 +47,7 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 The project has a basic API documentation at Postman. You can find the [API documentation here](https://documenter.getpostman.com/view/4267992/RW1dFJ63#951e7a4f-f625-4bd7-8b34-5ed2cea98d86).
 
 | Method | URL | Description
-| ------ | --- | 
+| ------ | --- |
 | POST   | /users | Create an application user
 | POST   | /piggy_banks | Create Piggy Bank for user
 | GET    | /piggy_banks | Get all piggy banks from an user
