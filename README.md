@@ -57,6 +57,10 @@ The project has a basic API documentation at Postman. You can find the [API docu
 | POST   | /piggy_banks/`piggy-bank-id`/movements | Make a movement for a Piggy Bank
 | DEL    | /piggy_banks/`piggy-bank-id`/movements?id=`movement_id` | Delete an existing movement for a piggy bank
 
+# Entity Relationship
+
+![ER model](https://user-images.githubusercontent.com/4305837/39544752-729fa8ba-4e25-11e8-93a7-24df78b00c9a.png)
+
 # Extra
 
 - Piggy Bank icon found at https://icons8.com/icon/2975/money-box
