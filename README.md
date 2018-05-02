@@ -46,16 +46,16 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 
 The project has a basic API documentation at Postman. You can find the [API documentation here](https://documenter.getpostman.com/view/4267992/RW1dFJ63#951e7a4f-f625-4bd7-8b34-5ed2cea98d86).
 
-| Method | URL | Description
-| ------ | --- |
-| POST   | /users | Create an application user
-| POST   | /piggy_banks | Create Piggy Bank for user
-| GET    | /piggy_banks | Get all piggy banks from an user
-| PUT    | /piggy_banks/`piggy-bank-id` | Update a Piggy Bank info
-| DEL    | /piggy_banks/`piggy-bank-id` | Delete an existing piggy bank
-| GET    | /piggy_banks/`piggy-bank-id`/movements | Get all movements from a piggy bank
-| POST   | /piggy_banks/`piggy-bank-id`/movements | Make a movement for a Piggy Bank
-| DEL    | /piggy_banks/`piggy-bank-id`/movements?id=`movement_id` | Delete an existing movement for a piggy bank
+| Method | URL | Description |
+| ------ | --- | ----------- |
+| POST   | /users | Create an application user |
+| POST   | /piggy_banks | Create Piggy Bank for user |
+| GET    | /piggy_banks | Get all piggy banks from an user |
+| PUT    | /piggy_banks/`piggy-bank-id` | Update a Piggy Bank info |
+| DEL    | /piggy_banks/`piggy-bank-id` | Delete an existing piggy bank |
+| GET    | /piggy_banks/`piggy-bank-id`/movements | Get all movements from a piggy bank |
+| POST   | /piggy_banks/`piggy-bank-id`/movements | Make a movement for a Piggy Bank |
+| DEL    | /piggy_banks/`piggy-bank-id`/movements?id=`movement_id` | Delete an existing movement for a piggy bank |
 
 # Entity Relationship
 
