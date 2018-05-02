@@ -1,7 +1,5 @@
 class MovementsController < ApplicationController
 
-  before_action :verify_authenticity
-
   def create
     params.require(:piggy_banks_movement).permit!
 
@@ -13,7 +11,7 @@ class MovementsController < ApplicationController
   end
 
   def show
-    @piggy_bank = PiggyBank.find(params[:piggy_bank_id])
+    @piggy_bank = PiggyBank.find_by!(user_id: current_user.id, id: params[:piggy_bank_id])
     @movements = Movement.where(piggy_bank_id: params[:piggy_bank_id]).order(updated_at: :desc)
 
     respond_to do |format|

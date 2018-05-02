@@ -9,7 +9,7 @@ PiggyB is a web application and API that helps you organize personal finance. Cr
 
 # Concept Idea
 
-The idea originally came from the concept of [Piggy Banks](https://en.wikipedia.org/wiki/Piggy_bank). Present in my childhood, Piggy Banks are a way to manually save and control your money, usually used to save money for a specific goal.
+The idea originally came from the concept of [Piggy Banks](https://en.wikipedia.org/wiki/Piggy_bank). Present in my childhood, Piggy Banks are a way to manually save and control your money for a specific goal.
 
 # Build and running
 
@@ -26,3 +26,7 @@ The idea originally came from the concept of [Piggy Banks](https://en.wikipedia.
 - Setup Database: `rake db:setup`
 - Run Database Migrations: `rake db:migrate`
 - Start application: `rails s`
+
+# Extra
+
+- Piggy Bank icon found at https://icons8.com/icon/2975/money-box

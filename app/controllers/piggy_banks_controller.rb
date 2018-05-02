@@ -24,7 +24,7 @@ class PiggyBanksController < ApplicationController
   end
 
   def edit
-    @piggy_bank = PiggyBank.find_by(id: params[:id], user_id: current_user.id)
+    @piggy_bank = PiggyBank.find_by!(id: params[:id], user_id: current_user.id)
   end
 
   def update
@@ -39,7 +39,7 @@ class PiggyBanksController < ApplicationController
   end
 
   def destroy
-    @piggy_bank = PiggyBank.find_by(id: params[:id], user_id: current_user.id)
+    @piggy_bank = PiggyBank.find_by!(id: params[:id], user_id: current_user.id)
     @piggy_bank.destroy
 
     respond_to do |format|

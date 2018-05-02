@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    render json: { message: exception.message }, status: :not_found
+    respond_to do |format|
+      format.html { render file: "errors/404", status: :not_found }
+      format.json { render json: { message: exception.message }, status: :not_found }
+    end
   end
 
   rescue_from ActiveRecord::RecordInvalid do |exception|
