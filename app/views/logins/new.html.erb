@@ -5,7 +5,7 @@
 <div class="container pt-5">
   <div class="row">
 
-    <div class="col-md-6 text-center">
+    <div class="col-sm text-center">
       <%= image_tag "piggy_bank.png", class: "center-block half-size" %>
       <p class="mt-4">
         PiggyB is a Web Application and API that helps you organize your personal finance.
@@ -18,7 +18,7 @@
       </p>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm">
         <% if flash[:notice] %>
           <div class="alert alert-danger" role="alert"> <%= flash.notice() %> </div>
         <% end %>
@@ -38,7 +38,7 @@
             <% end %>
           </div>
         </div>
-
+        <hr /><small class="form-text text-muted text-center">Don't have and account? Sign up now !</small>
         <div class="card mt-4">
           <div class="card-body">
             <%= form_with scope: :user, url: users_path do |form| %>

@@ -4,8 +4,8 @@ FactoryBot.define do
     currency 'CAD'
     description 'My PS4 Games'
     balance 200.0
-    total_credit 300.0
-    total_debit 100.0
+    total_credit 0.0
+    total_debit 0.0
 
     association :user, factory: [:user, :random_email]
   end

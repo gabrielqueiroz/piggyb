@@ -26,15 +26,15 @@ describe PiggyBanksController do
         it { expect(subject).to render_template(:index) }
         it { expect(assigns(:summary)).not_to be_nil }
         it { expect(assigns(:summary).sum_of_balance).to eq 200.0 }
-        it { expect(assigns(:summary).sum_of_credit).to eq 300.0 }
-        it { expect(assigns(:summary).sum_of_debit).to eq 100.0 }
+        it { expect(assigns(:summary).sum_of_credit).to eq 200.0 }
+        it { expect(assigns(:summary).sum_of_debit).to eq 0.0 }
         it { expect(assigns(:piggy_banks)).not_to be_nil }
         it { expect(assigns(:piggy_banks).first.name).to eq 'PS4 Games' }
         it { expect(assigns(:piggy_banks).first.currency).to eq 'CAD' }
         it { expect(assigns(:piggy_banks).first.description).to eq 'My PS4 Games' }
         it { expect(assigns(:piggy_banks).first.balance).to eq 200.0 }
-        it { expect(assigns(:piggy_banks).first.total_credit).to eq 300.0 }
-        it { expect(assigns(:piggy_banks).first.total_debit).to eq 100.0 }
+        it { expect(assigns(:piggy_banks).first.total_credit).to eq 200.0 }
+        it { expect(assigns(:piggy_banks).first.total_debit).to eq 0.0 }
       end
 
       context "using JSON format" do
@@ -46,14 +46,14 @@ describe PiggyBanksController do
         it { expect(response.status).to eq 200 }
         it { expect(body[:summary]).not_to be_nil }
         it { expect(body[:summary][:sum_of_balance]).to eq 200.0 }
-        it { expect(body[:summary][:sum_of_credit]).to eq 300.0 }
-        it { expect(body[:summary][:sum_of_debit]).to eq 100.0 }
+        it { expect(body[:summary][:sum_of_credit]).to eq 200.0 }
+        it { expect(body[:summary][:sum_of_debit]).to eq 0.0 }
         it { expect(body[:piggy_banks].first[:name]).to eq 'PS4 Games' }
         it { expect(body[:piggy_banks].first[:currency]).to eq 'CAD' }
         it { expect(body[:piggy_banks].first[:description]).to eq 'My PS4 Games' }
         it { expect(body[:piggy_banks].first[:balance]).to eq 200.0 }
-        it { expect(body[:piggy_banks].first[:total_credit]).to eq 300.0 }
-        it { expect(body[:piggy_banks].first[:total_debit]).to eq 100.0 }
+        it { expect(body[:piggy_banks].first[:total_credit]).to eq 200.0 }
+        it { expect(body[:piggy_banks].first[:total_debit]).to eq 0.0 }
       end
 
     end

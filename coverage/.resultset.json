@@ -323,6 +323,15 @@
       "/Users/gabriel.queiroz/Github/piggyb/app/models/piggy_bank.rb": [
         1,
         1,
+        1,
+        null,
+        1,
+        45,
+        45,
+        null,
+        0,
+        null,
+        null,
         null,
         1,
         11,
@@ -546,6 +555,9 @@
         0,
         null,
         0,
+        0,
+        0,
+        null,
         null,
         null,
         1,
@@ -773,8 +785,6 @@
         null,
         1,
         6,
-        null,
-        6,
         6,
         6,
         6,
@@ -791,7 +801,6 @@
         null,
         1,
         3,
-        null,
         3,
         null,
         3,
@@ -971,6 +980,6 @@
         null
       ]
     },
-    "timestamp": 1525232622
+    "timestamp": 1525281760
   }
 }

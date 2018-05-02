@@ -11,10 +11,8 @@ class PiggyBanksController < ApplicationController
 
   def create
     params.require(:piggy_bank).permit!
-
     @piggy_bank = PiggyBank.new(params[:piggy_bank])
     @piggy_bank.user_id = current_user.id
-    @piggy_bank.total_credit = @piggy_bank.balance
     @piggy_bank.save
 
     respond_to do |format|
@@ -29,7 +27,6 @@ class PiggyBanksController < ApplicationController
 
   def update
     params.require(:piggy_bank).permit!
-
     @piggy_bank = PiggyBank.where(user_id: current_user.id).update(params[:id], params[:piggy_bank])
 
     respond_to do |format|
