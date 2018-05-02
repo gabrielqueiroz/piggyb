@@ -3,10 +3,10 @@ require 'spec_helper'
 include ActionController::HttpAuthentication::Basic
 
 describe PiggyBanksController do
+  let(:session) { Hash.new }
+  let(:authorization) { '' }
 
   context "GET /piggy_banks" do
-    let(:session) { Hash.new }
-    let(:authorization) { '' }
     let(:piggy_bank) { create(:piggy_bank) }
     let(:user) { piggy_bank.user }
 
@@ -135,7 +135,7 @@ describe PiggyBanksController do
     end
   end
 
-  context "PUT /piggy_banks" do
+  context "PUT /piggy_bank/:id" do
     let(:piggy_bank) { create(:piggy_bank) }
     let(:user) { piggy_bank.user }
 
@@ -161,6 +161,27 @@ describe PiggyBanksController do
       it { expect(body[:description]).to eq 'Updated description' }
     end
 
+  end
+
+  context "DELETE /piggy_bank/:id" do
+    let(:piggy_bank) { create(:piggy_bank) }
+    let(:user) { piggy_bank.user }
+
+    before do
+      request.env['HTTP_AUTHORIZATION'] = authorization
+      delete :destroy, format: request_format, params: params
+    end
+
+    context "delete piggy bank" do
+      let(:request_format) { :json }
+      let(:params) do
+        { id: piggy_bank.id }
+      end
+      let(:authorization) { encode_credentials(user.email, user.password) }
+
+      it { expect(response.status).to eq 200 }
+      it { expect(response.body).to eq 'Piggy Bank deleted' }
+    end
   end
 
 end

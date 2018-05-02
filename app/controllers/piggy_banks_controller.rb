@@ -24,13 +24,13 @@ class PiggyBanksController < ApplicationController
   end
 
   def edit
-    @piggy_bank = PiggyBank.find(params[:id])
+    @piggy_bank = PiggyBank.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def update
     params.require(:piggy_bank).permit!
 
-    @piggy_bank = PiggyBank.update(params[:id], params[:piggy_bank])
+    @piggy_bank = PiggyBank.where(user_id: current_user.id).update(params[:id], params[:piggy_bank])
 
     respond_to do |format|
       format.html { redirect_to piggy_banks_path }
@@ -39,10 +39,13 @@ class PiggyBanksController < ApplicationController
   end
 
   def destroy
-    @piggy_bank = PiggyBank.find(params[:id])
+    @piggy_bank = PiggyBank.find_by(id: params[:id], user_id: current_user.id)
     @piggy_bank.destroy
 
-    redirect_to piggy_banks_path
+    respond_to do |format|
+      format.html { redirect_to piggy_banks_path }
+      format.json { render json: "Piggy Bank deleted", status: :ok }
+    end
   end
 
 end
