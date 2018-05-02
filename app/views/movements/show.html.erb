@@ -38,7 +38,16 @@
     <div class="col-md-6">
       <h5>Piggy Bank Movements</h5>
       <% if @movements.blank? %>
-        <p> You don't have any Movements yet. Go ahead and make movements </p>
+        <p>
+          A movement can be anything that affect the PiggyBank, such as a game that you bought or the money that you saved last month.
+        </p>
+        <p>
+          The movement amount can be either positive or negative, in case that you saved or used the money
+        </p>
+        <hr />
+        <p>
+          You don't have any Movements yet. Go ahead and make movements!
+        </p>
       <% else %>
         <% @movements.each do |mv| %>
             <div class="card">
@@ -52,8 +61,8 @@
                     <h6 class="card-subtitle mb-2 text-muted"><%= mv.description %></h6>
                     <h6> <%= mv.created_at.strftime("%m/%d/%Y at %I:%M%p") %> </h6>
                   </div>
-                  <div class="col-md-2 smal.,vl">
-                    <%= link_to 'Destroy', piggy_bank_movements_path(movement_id: mv.id), method: :delete, data: { confirm: "Destroy movement #{mv.name}?" }, class: "card-link"%>
+                  <div class="col-md-2 small">
+                    <%= link_to 'Destroy', piggy_bank_movements_path(id: mv.id), method: :delete, data: { confirm: "Destroy movement #{mv.name}?" }, class: "card-link"%>
                   </div>
                 </div>
               </div>

@@ -24,7 +24,7 @@ class MovementsController < ApplicationController
   end
 
   def destroy
-    @movement = Movement.joins(:piggy_bank).find_by!('piggy_banks.id': params[:piggy_bank_id], 'piggy_banks.user': current_user.id, 'movements.id': params[:movement_id])
+    @movement = Movement.joins(:piggy_bank).find_by!('piggy_banks.id': params[:piggy_bank_id], 'piggy_banks.user': current_user.id, 'movements.id': params[:id])
     @movement.destroy
 
     respond_to do |format|

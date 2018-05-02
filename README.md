@@ -5,11 +5,13 @@
 
 # About
 
-PiggyB is a web application and API that helps you organize personal finance. Create piggy banks for you personal expenses, control your expenses during your trip or create piggy banks for your goals.
+PiggyB is a Web Application and API that helps you organize your personal finance.
+Create Piggy Banks for you personal savings, control your expenses and reach your goals.
 
 # Concept Idea
 
-The idea originally came from the concept of [Piggy Banks](https://en.wikipedia.org/wiki/Piggy_bank). Present in my childhood, Piggy Banks are a way to manually save and control your money for a specific goal.
+The idea originally came from the concept of [Piggy Banks](https://en.wikipedia.org/wiki/Piggy_bank).
+Present in my childhood, Piggy Banks are a way to manually save and control your money for a specific goal.
 
 # Build and running
 
