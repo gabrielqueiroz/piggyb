@@ -15,25 +15,34 @@
 
       <div class="row">
         <div class="col-md-6 small">
-          Total Credits
+          <div class="row">
+            <div class="col-md-12">
+              Total Credits
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 text-nowrap small">
+              <%= piggy_bank.currency %>
+            </div>
+            <div class="col-md-8 text-right">
+              <h6><%= number_to_currency piggy_bank.total_credit %></h6>
+            </div>
+          </div>
         </div>
         <div class="col-md-6 small">
-          Total Debits
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-2 text-nowrap small">
-          <%= piggy_bank.currency %>
-        </div>
-        <div class="col-md-4 text-right">
-          <h6><%= number_to_currency piggy_bank.total_credit %></h6>
-        </div>
-        <div class="col-md-2 text-nowrap small">
-          <%= piggy_bank.currency %>
-        </div>
-        <div class="col-md-4 text-right">
-          <h6><%= number_to_currency piggy_bank.total_debit %><h6>
+          <div class="row">
+            <div class="col-md-12">
+              Total Debits
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 text-nowrap small">
+              <%= piggy_bank.currency %>
+            </div>
+            <div class="col-md-8 text-right">
+              <h6><%= number_to_currency piggy_bank.total_debit %><h6>
+            </div>
+          </div>
         </div>
       </div>
   </div>
