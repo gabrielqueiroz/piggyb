@@ -5,16 +5,13 @@
 <div class="container pt-5">
   <div class="row">
 
-    <div class="col-sm text-center">
+    <div class="col-sm text-center mb-4">
       <%= image_tag "piggy_bank.png", class: "center-block half-size" %>
       <p class="mt-4">
         PiggyB is a Web Application and API that helps you organize your personal finance.
       </p>
       <p class="mt-4">
         Create Piggy Banks for you personal savings, control your expenses and reach your goals. Start it now!
-      </p>
-      <p>
-        <a href="https://documenter.getpostman.com/view/4267992/RW1dFJ63" target="_blank"  class="btn btn-info">Check API doc at Postman</a>
       </p>
     </div>
 
@@ -39,7 +36,7 @@
           </div>
         </div>
         <hr /><small class="form-text text-muted text-center">Don't have and account? Sign up now !</small>
-        <div class="card mt-4">
+        <div class="card mt-2 mb-4">
           <div class="card-body">
             <%= form_with scope: :user, url: users_path do |form| %>
               <div class="form-group">

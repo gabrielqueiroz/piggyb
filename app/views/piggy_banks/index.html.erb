@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9 mb-2">
         <h3>My Piggy Banks</h3>
     </div>
-    <div class="col-md-6 text-right">
-      <%= link_to 'Create a PiggyBank', new_piggy_bank_path, class: "btn btn-primary right" %>
+    <div class="col-md-3 text-right">
+      <%= link_to 'New PiggyBank', new_piggy_bank_path, class: "btn btn-primary btn-block right" %>
     </div>
   </div>
 </div>
@@ -16,14 +16,14 @@
     <div class="row">
       <% @piggy_banks.each do |piggy_bank| %>
         <div class="col-md-6">
-          <div class="card mb-4">
+          <div class="card mb-4 shadow">
             <div class="card-body">
               <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: piggy_bank } %>
             </div>
             <div class="card-footer text-muted">
+              <%= link_to 'Manage', piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
               <%= link_to 'Edit', edit_piggy_bank_path(piggy_bank), class: "card-link" %>
               <%= link_to 'Destroy', piggy_bank_path(piggy_bank), method: :delete, data: { confirm: "Destroy piggy bank #{piggy_bank.name}?" }, class: "card-link"%>
-              <%= link_to 'Manage', piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
             </div>
           </div>
         </div>

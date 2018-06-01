@@ -7,24 +7,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8"> <meta name=viewport content="width=device-width, initial-scale=1">
   </head>
 
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <% unless session[:user_id].blank? %>
-          <a class="navbar-brand" href="#">PiggyB</a>
-            <div class="collapse navbar-collapse">
+            <a class="navbar-brand" href="#">PiggyB</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarOptions">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <%= link_to '/piggy_banks', class: "btn btn-sm" do %> My Piggy Banks <% end %>
+                  <%= link_to '/piggy_banks', class: "nav-link btn-sm" do %> My Piggy Banks <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '/piggy_banks/new', class: "nav-link btn-sm" do %> Create a Piggy Bank <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'https://goo.gl/3bFqXL', class: "nav-link btn-sm", target: "_blank" do %> Check API documentation <% end %>
                 </li>
               </ul>
-
-              <%= link_to '/logout', class: "btn btn-sm btn-outline-secondary" do %> logout <% end %>
+              <span class="navbat-text">
+                <%= link_to '/logout', class: "btn mb-2 mt-2 btn-sm btn-block btn-outline-secondary" do %> logout <% end %>
+              </span>
             </div>
           <% end %>
         </div>
@@ -32,7 +42,7 @@
     </header>
 
     <main>
-        <%= yield %>
+      <%= yield %>
     </main>
 
     <footer>
