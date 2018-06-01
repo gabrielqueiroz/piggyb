@@ -16,6 +16,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem "responders"
 gem "roar-rails"
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'simplecov'
