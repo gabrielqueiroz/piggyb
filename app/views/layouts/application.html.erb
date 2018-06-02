@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag 'favicon.ico' %>
     <meta charset="UTF-8"> <meta name=viewport content="width=device-width, initial-scale=1">
   </head>
 
@@ -16,7 +18,7 @@
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <% unless session[:user_id].blank? %>
-            <a class="navbar-brand" href="#">PiggyB</a>
+            <a class="navbar-brand" href="#"><b>Piggy</b>•B</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,7 +47,8 @@
       <%= yield %>
     </main>
 
-    <footer>
+    <footer class="footer">
+        <b><small>Developed by <a href="http://gabrielqueiroz.github.io" target="_blank">Gabriel Queiroz</a> - 2018</small></b>
     </footer>
 
   </body>

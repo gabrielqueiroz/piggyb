@@ -1,6 +1,6 @@
 class PiggyBanksController < ApplicationController
   def index
-    @piggy_banks = PiggyBank.where(user_id: current_user.id)
+    @piggy_banks = PiggyBank.where(user_id: current_user.id).order(updated_at: :desc)
     @summary = Summary.build_from_piggy_banks(@piggy_banks)
 
     respond_to do |format|

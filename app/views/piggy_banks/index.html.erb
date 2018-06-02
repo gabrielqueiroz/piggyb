@@ -4,14 +4,32 @@
         <h3>My Piggy Banks</h3>
     </div>
     <div class="col-md-3 text-right">
-      <%= link_to 'New PiggyBank', new_piggy_bank_path, class: "btn btn-primary btn-block right" %>
+      <%= link_to 'New PiggyBank', new_piggy_bank_path, class: "btn btn-primary btn-block right" unless @piggy_banks.blank? %>
     </div>
   </div>
 </div>
 
 <div class="container mt-4">
   <% if @piggy_banks.blank? %>
-    <p> You don't have any Piggy Banks yet. Go ahead and create your first Piggy Bank </p>
+  <div class="card mb-4 shadow">
+    <div class="card-body text-secondary d-flex">
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <%= image_tag "dollar-glass.gif", class: "fill-width" %>
+        </div>
+        <div class="col-sm-8 flex-row align-self-center text-center">
+          <p>
+            You don't have any Piggy Banks yet.
+          </p>
+          <p>
+            Start saving your money and organizing your finances. Go ahead and create your first Piggy Bank.
+          </p>
+          <br />
+          <%= link_to 'Create a PiggyBank', new_piggy_bank_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
   <% else %>
     <div class="row">
       <% @piggy_banks.each do |piggy_bank| %>

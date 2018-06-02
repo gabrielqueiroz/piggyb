@@ -64,3 +64,4 @@ The project has a basic API documentation at Postman. You can find the [API docu
 # Extra
 
 - Piggy Bank icon found at https://icons8.com/icon/2975/money-box
+- Piggy Bank gif and Dollar Glass gif found at https://dribbble.com/joesaiyang

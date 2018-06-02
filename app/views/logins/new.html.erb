@@ -1,26 +1,29 @@
-<div class="container pt-5">
+<div class="container">
   <h1 class="text-center"><b>Piggy</b>•B</h1>
 </div>
 
-<div class="container pt-5">
+<div class="container pt-3">
   <div class="row">
-
-    <div class="col-sm text-center mb-4">
-      <%= image_tag "piggy_bank.png", class: "center-block half-size" %>
-      <p class="mt-4">
-        PiggyB is a Web Application and API that helps you organize your personal finance.
-      </p>
-      <p class="mt-4">
-        Create Piggy Banks for you personal savings, control your expenses and reach your goals. Start it now!
-      </p>
+    <div class="col-sm mb-2 text-center">
+      <div class="card fill-height shadow-sm">
+        <div class="card-body">
+          <%= image_tag "piggy_bank.gif", class: "fill-width" %>
+          <p class="text-muted mt-4">
+            PiggyB is a Web Application and API that helps you organize your personal finance.
+          </p>
+          <p class="text-muted mt-4">
+            Create Piggy Banks for you personal savings, control your expenses and reach your goals. Start it now!
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="col-sm">
+    <div class="col-sm mb-2">
         <% if flash[:notice] %>
           <div class="alert alert-danger" role="alert"> <%= flash.notice() %> </div>
         <% end %>
 
-        <div class="card">
+        <div class="card shadow">
           <div class="card-body">
 
             <%= form_with scope: :login, url: '/login' do |form| %>
@@ -36,7 +39,7 @@
           </div>
         </div>
         <hr /><small class="form-text text-muted text-center">Don't have and account? Sign up now !</small>
-        <div class="card mt-2 mb-4">
+        <div class="card shadow mt-2">
           <div class="card-body">
             <%= form_with scope: :user, url: users_path do |form| %>
               <div class="form-group">
@@ -58,5 +61,6 @@
           </div>
       </div>
     </div>
+  </div>
 
 </div>

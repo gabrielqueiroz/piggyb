@@ -8,15 +8,17 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6">
+      <hr />
       <h5>Piggy Bank Details</h5>
-      <div class="card shadow">
+      <div class="card mb-4 shadow">
         <div class="card-body">
           <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: @piggy_bank } %>
         </div>
       </div>
-      <hr /><small class="form-text text-muted text-center">Create a new movement</small>
-      <div class="card mt-2 shadow">
+      <hr />
+      <h5>Create a new movement</h5>
+      <div class="card mb-4 shadow">
         <div class="card-body">
           <%= form_with scope: :piggy_banks_movement, url: piggy_bank_movements_path do |form| %>
             <div class="form-group">
@@ -36,6 +38,7 @@
     </div>
 
     <div class="col-md-6">
+      <hr />
       <h5>Piggy Bank Movements</h5>
       <% if @movements.blank? %>
         <p>
@@ -44,7 +47,6 @@
         <p>
           The movement amount can be either positive or negative, in case that you saved or used the money
         </p>
-        <hr />
         <div class="card border-danger mb-4">
           <div class="card-body text-danger">
             You don't have any <b>Movements</b> yet. Go ahead and make movements!
