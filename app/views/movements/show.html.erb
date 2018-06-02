@@ -57,15 +57,15 @@
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-xl-4">
                     <%= @piggy_bank.currency %> <h2><%= number_to_currency mv.amount %></h2>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-xl-6">
                     <h5 class="card-title"><%= mv.name %></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><%= mv.description %></h6>
                     <h6> <%= mv.created_at.strftime("%m/%d/%Y at %I:%M%p") %> </h6>
                   </div>
-                  <div class="col-md-2 small">
+                  <div class="col-xl-2 mt-2 small">
                     <%= link_to 'Destroy', piggy_bank_movements_path(id: mv.id), method: :delete, data: { confirm: "Destroy movement #{mv.name}?" }, class: "card-link"%>
                   </div>
                 </div>
