@@ -34,3 +34,13 @@ pt-BR:
       balance_help: "Crie seu cofrinho com um valor inicial."
       name: "nome"
       description: "descrição"
+    edit:
+      editing: "Editando"
+      actual_piggy_bank: "Cofrinho atual"
+      updating_piggy_bank: "Atualizando cofrinho para"
+      name: "nome"
+      description: "descrição"
+      update_piggy_bank: "Atualizar cofrinho"
+    piggy_bank_details:
+      total_credits: "Total de Créditos"
+      total_debits: "Total de Débitos"

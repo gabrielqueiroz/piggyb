@@ -34,3 +34,13 @@ en:
       balance_help: "Create your PiggyBank with an initial value."
       name: "name"
       description: "description"
+    edit:
+      editing: "Editing"
+      actual_piggy_bank: "Actual Piggy Bank"
+      updating_piggy_bank: "Updating Piggy Bank info to"
+      name: "name"
+      description: "description"
+      update_piggy_bank: "Update Piggy Bank"
+    piggy_bank_details:
+      total_credits: "Total Credits"
+      total_debits: "Total Debits"

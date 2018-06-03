@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <div class="row">
     <div class="col-md-6">
-        <h3>Editing <b><%= @piggy_bank.name %></b></h3>
+        <h3><b><%= t('.editing') %> <%= @piggy_bank.name %></b></h3>
     </div>
   </div>
 </div>
@@ -9,7 +9,7 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-6">
-      <h5>Actual Piggy Bank</h5>
+      <h5><%= t '.actual_piggy_bank' %></h5>
       <div class="card">
         <div class="card-body">
           <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: @piggy_bank } %>
@@ -18,22 +18,22 @@
     </div>
 
     <div class="col-md-6">
-      <h5>Updating Piggy Bank info to</h5>
+      <h5><%= t '.updating_piggy_bank' %></h5>
       <div class="card">
         <div class="card-body">
           <%= form_with scope: :piggy_bank, url: "/piggy_banks/#{@piggy_bank.id}", method: :put do |form| %>
             <div class="form-group">
-              <%= form.text_field :name, class: "form-control", placeholder: "name", required: true %>
+              <%= form.text_field :name, class: "form-control", placeholder: t('.name'), required: true %>
             </div>
             <div class="form-group">
-              <%= form.text_field :description, class: "form-control", placeholder: "description", required: true  %>
+              <%= form.text_field :description, class: "form-control", placeholder: t('.description'), required: true  %>
             </div>
             <div class="form-group">
               <select name="piggy_bank[currency]" id="piggy_bank_currency" required=true class="custom-select">
                 <%= render partial: "piggy_banks/currencies" %>
               </select>
             </div>
-            <%= form.submit "Update Piggy Bank", class: "btn btn-primary btn-block" %>
+            <%= form.submit t('.update_piggy_bank'), class: "btn btn-primary btn-block" %>
           <% end %>
         </div>
       </div>
