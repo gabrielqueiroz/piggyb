@@ -1,6 +1,6 @@
 class LoginsController < ApplicationController
 
-  before_action :verify_login, except: :destroy
+  skip_before_action :verify_login
 
   def index
   end
@@ -21,8 +21,4 @@ class LoginsController < ApplicationController
     redirect_to root_path
   end
 
-  private
-  def verify_login
-    redirect_to piggy_banks_path if session[:user_id].present?
-  end
 end
