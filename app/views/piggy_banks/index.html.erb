@@ -32,7 +32,9 @@
         <div class="col-md-6">
           <div class="card mb-4 shadow">
             <div class="card-body">
-              <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: piggy_bank } %>
+              <%= link_to piggy_bank_movements_path(piggy_bank.id), class: "card-body-link" do %>
+               <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: piggy_bank } %>
+              <% end %>
             </div>
             <div class="card-footer text-muted">
               <%= link_to t('.movement'), piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
