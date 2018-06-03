@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_action :set_locale
+  before_action :verify_login
 
   def set_locale
     session[:locale] = params[:locale] || I18n.default_locale
@@ -28,6 +29,10 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: session[:locale] }
+  end
+
+  def verify_login
+    redirect_to root_path unless session[:user_id].present?
   end
 
   def current_user
