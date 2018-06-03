@@ -1,4 +1,11 @@
 pt-BR:
+  layouts:
+    application:
+      developed_by: "Desenvolvido por"
+      my_piggy_banks: "Meus cofrinhos"
+      create_piggy_bank: "Criar um cofrinho"
+      check_api_documentation: "Ver documentação da API"
+      logout: "sair"
   logins:
     new:
       description_1: "PiggyB é uma aplicação Web e uma API que ajuda você a organizar as suas finanças pessoais."

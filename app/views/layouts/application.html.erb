@@ -33,17 +33,17 @@
             <div class="collapse navbar-collapse" id="navbarOptions">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <%= link_to '/piggy_banks', class: "nav-link btn-sm" do %> My Piggy Banks <% end %>
+                  <%= link_to '/piggy_banks', class: "nav-link btn-sm mt-2 mb-2" do %> <%= t '.my_piggy_banks' %> <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '/piggy_banks/new', class: "nav-link btn-sm" do %> Create a Piggy Bank <% end %>
+                  <%= link_to '/piggy_banks/new', class: "nav-link btn-sm mt-2 mb-2" do %> <%= t '.create_piggy_bank' %> <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'https://goo.gl/3bFqXL', class: "nav-link btn-sm", target: "_blank" do %> Check API documentation <% end %>
+                  <%= link_to 'https://goo.gl/3bFqXL', class: "nav-link btn-sm mt-2 mb-2", target: "_blank" do %> <%= t '.check_api_documentation' %> <% end %>
                 </li>
               </ul>
               <span class="navbat-text">
-                <%= link_to '/logout', class: "btn mb-2 mt-2 btn-sm btn-block btn-outline-secondary" do %> logout <% end %>
+                <%= link_to '/logout', class: "btn mt-2 mb-2 btn-sm btn-block btn-outline-secondary" do %> <%= t '.logout' %> <% end %>
               </span>
             </div>
           <% end %>
@@ -56,7 +56,7 @@
     </main>
 
     <footer class="footer">
-        <b><small>Developed by <a href="http://gabrielqueiroz.github.io" target="_blank">Gabriel Queiroz</a> - 2018</small></b>
+        <b><small><%= t '.developed_by' %> <a href="http://gabrielqueiroz.github.io" target="_blank">Gabriel Queiroz</a> - 2018</small></b>
         <p><small><a href='?locale=en'>en</a> - <a href='?locale=pt-BR'>pt-BR</a></small></p>
     </footer>
 

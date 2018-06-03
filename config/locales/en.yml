@@ -1,4 +1,11 @@
 en:
+  layouts:
+    application:
+      developed_by: "Developed by"
+      my_piggy_banks: "My Piggy Banks"
+      create_piggy_bank: "Create a Piggy Bank"
+      check_api_documentation: "Check API documentation"
+      logout: "logout"
   logins:
     new:
       description_1: "PiggyB is a Web Application and API that helps you organize your personal finance."
