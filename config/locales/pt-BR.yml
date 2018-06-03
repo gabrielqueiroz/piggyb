@@ -1,0 +1,12 @@
+pt-BR:
+  logins:
+    new:
+      description_1: "PiggyB é uma aplicação Web e uma API que ajuda você a organizar as suas finanças pessoais."
+      description_2: "Crie cofrinhos para suas reservas pessoas, controle suas despesas e alcance seus objetivos. Comece agora!"
+      signup_help: "Não tem uma conta? Crie uma conta agora!"
+      password_help: "Nós nunca vamos compartilhar seu email com alguém."
+      sign_up: "Crie uma conta"
+      sign_in: "Entrar"
+      name: "nome"
+      password: "senha"
+      confirm_password: "confirme a senha"
