@@ -2,7 +2,7 @@ pt-BR:
   logins:
     new:
       description_1: "PiggyB é uma aplicação Web e uma API que ajuda você a organizar as suas finanças pessoais."
-      description_2: "Crie cofrinhos para suas reservas pessoas, controle suas despesas e alcance seus objetivos. Comece agora!"
+      description_2: "Crie cofrinhos para suas economias pessoais, controle suas despesas e alcance seus objetivos. Comece agora!"
       signup_help: "Não tem uma conta? Crie uma conta agora!"
       password_help: "Nós nunca vamos compartilhar seu email com alguém."
       sign_up: "Crie uma conta"
@@ -10,3 +10,27 @@ pt-BR:
       name: "nome"
       password: "senha"
       confirm_password: "confirme a senha"
+  piggy_banks:
+    index:
+      my_piggy_banks: "Meus cofrinhos"
+      warn_1: "Você ainda não tem nenhum cofrinho."
+      warn_2: "Comece a economizar e organizar as suas despesas pessoais. Vá em frente e crie seu primeiro cofrinho!"
+      new_piggy_bank: "Novo cofrinho"
+      create_piggy_bank: "Criar um cofrinho"
+      movement: 'Movimentar'
+      edit: 'Editar'
+      destroy: 'Destruir'
+    new:
+      create_piggy_bank: "Criar um cofrinho"
+      what_is_piggy_bank: "O que é um cofrinho?"
+      examples: "Exemplos:"
+      description_1: "PiggyB ajuda você a organizar suas despesas pessoais e alcançar seus objetivos."
+      description_2: "Crie cofrinhos para suas economias, viagens e hoobies."
+      example_title_1: "Meus jogos de PS4"
+      example_description_1: "Acompanhar minhas despesas com jogos de PS4"
+      example_title_2: "Minha viagem para o Canada"
+      example_description_2: "Acompanhar minhas despesas durante minha viagem para o Canada."
+      creating_piggy_bank: "Crie um novo cofrinho"
+      balance_help: "Crie seu cofrinho com um valor inicial."
+      name: "nome"
+      description: "descrição"

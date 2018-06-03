@@ -10,3 +10,27 @@ en:
       name: "name"
       password: "password"
       confirm_password: "confirm password"
+  piggy_banks:
+    index:
+      my_piggy_banks: "My Piggy Banks"
+      warn_1: "You don't have any Piggy Banks yet."
+      warn_2: "Start saving your money and organizing your finances. Go ahead and create your first Piggy Bank."
+      new_piggy_bank: "New PiggyBank"
+      create_piggy_bank: "Create a PiggyBank"
+      movement: 'Movement'
+      edit: 'Edit'
+      destroy: 'Destroy'
+    new:
+      create_piggy_bank: "Create a Piggy Bank"
+      what_is_piggy_bank: "What is a Piggy Bank?"
+      examples: "Examples:"
+      description_1: "PiggyB help you organize your personal finances and reach your goals."
+      description_2: "Create Piggy Banks for your savings, trips and hobbies."
+      example_title_1: "My PS4 Games"
+      example_description_1: "Track my expenses with my PS4 games."
+      example_title_2: "My trip to Vancouver"
+      example_description_2: "Track my expenses during my trip to Vancouver."
+      creating_piggy_bank: "Creating a new Piggy Bank"
+      balance_help: "Create your PiggyBank with an initial value."
+      name: "name"
+      description: "description"

@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-9 mb-2">
-        <h3>My Piggy Banks</h3>
+        <h3><%= t '.my_piggy_banks' %></h3>
     </div>
     <div class="col-md-3 text-right">
-      <%= link_to 'New PiggyBank', new_piggy_bank_path, class: "btn btn-primary btn-block right shadow-sm" unless @piggy_banks.blank? %>
+      <%= link_to t('.new_piggy_bank'), new_piggy_bank_path, class: "btn btn-primary btn-block right shadow-sm" unless @piggy_banks.blank? %>
     </div>
   </div>
 </div>
@@ -18,14 +18,10 @@
           <%= image_tag "dollar-glass.gif", class: "fill-width" %>
         </div>
         <div class="col-sm-8 flex-row align-self-center text-center">
-          <p>
-            You don't have any Piggy Banks yet.
-          </p>
-          <p>
-            Start saving your money and organizing your finances. Go ahead and create your first Piggy Bank.
-          </p>
+          <p><%= t '.warn_1' %></p>
+          <p><%= t '.warn_2' %></p>
           <br />
-          <%= link_to 'Create a PiggyBank', new_piggy_bank_path, class: "btn btn-primary" %>
+          <%= link_to t('.create_piggy_bank'), new_piggy_bank_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
@@ -39,9 +35,9 @@
               <%= render partial: "piggy_banks/piggy_bank_details", locals: { piggy_bank: piggy_bank } %>
             </div>
             <div class="card-footer text-muted">
-              <%= link_to 'Manage', piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
-              <%= link_to 'Edit', edit_piggy_bank_path(piggy_bank), class: "card-link" %>
-              <%= link_to 'Destroy', piggy_bank_path(piggy_bank), method: :delete, data: { confirm: "Destroy piggy bank #{piggy_bank.name}?" }, class: "card-link"%>
+              <%= link_to t('.movement'), piggy_bank_movements_path(piggy_bank.id), class: "card-link" %>
+              <%= link_to t('.edit'), edit_piggy_bank_path(piggy_bank), class: "card-link" %>
+              <%= link_to t('.destroy'), piggy_bank_path(piggy_bank), method: :delete, data: { confirm: "Destroy piggy bank #{piggy_bank.name}?" }, class: "card-link"%>
             </div>
           </div>
         </div>
