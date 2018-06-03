@@ -36,6 +36,7 @@
       <h5 class="mb-4"><%= t '.creating_piggy_bank' %></h5>
       <div class="card mb-4 shadow">
         <div class="card-body">
+          <p class="text-center"><%= image_tag "safe.gif", class: "half-size" %></p>
           <%= form_with scope: :piggy_bank, url: piggy_banks_path do |form| %>
             <div class="form-group">
               <%= form.text_field :name, class: "form-control", placeholder: t('.name'), required: true %>
