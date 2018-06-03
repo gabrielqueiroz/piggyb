@@ -44,3 +44,16 @@ en:
     piggy_bank_details:
       total_credits: "Total Credits"
       total_debits: "Total Debits"
+  movements:
+    show:
+      movements: "Movements from"
+      piggy_bank_details: "Piggy Bank Details"
+      create_movement: "Create a new movement"
+      make_movement: "Make a movement"
+      piggy_bank_movements: "Piggy Bank Movements"
+      help_1: "A movement can be anything that affect the PiggyBank, such as a game that you bought or the money that you saved last month."
+      help_2: "The movement amount can be either positive or negative, in case that you saved or used the money"
+      help_3: "You don't have any <b>Movements</b> yet. Go ahead and make movements!"
+      name: "name"
+      description: "description"
+      destroy: "Destroy"

@@ -44,3 +44,16 @@ pt-BR:
     piggy_bank_details:
       total_credits: "Total de Créditos"
       total_debits: "Total de Débitos"
+  movements:
+    show:
+      movements: "Movimentos de"
+      piggy_bank_details: "Detalhes do cofrinho"
+      create_movement: "Criar um novo movimento"
+      make_movement: "Movimentar"
+      piggy_bank_movements: "Movimentos do cofrinho"
+      help_1: "Um movimento pode ser qualquer coisa que afete seu cofrinho, assim como um jogo que você comprou ou um dinheiro que você economizou no ultimo mês."
+      help_2: "O valor de um movimento pode ser tanto positivo quanto negativo, caso você tenha economizado ou utilizado aquele valor."
+      help_3: "Você ainda não tem <b>Movimentos</b> para esse cofrinho. Vá em frente e faça novos movimentos!"
+      name: "nome"
+      description: "descrição"
+      destroy: "Destruir"
