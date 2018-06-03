@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_login
-    redirect_to root_path unless session[:user_id].present?
+    redirect_to root_path unless request.format.json? || session[:user_id].present?
   end
 
   def current_user
