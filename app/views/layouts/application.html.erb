@@ -26,24 +26,24 @@
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <% unless session[:user_id].blank? %>
-            <a class="navbar-brand" href="#"><%= image_tag "piggy_bank_white.png", class: "fixed-small-size" %> <b>Piggy</b>•B</a>
+            <%= link_to piggy_banks_path, class: "navbar-brand text-white" do %><%= image_tag "piggy_bank_white.png", class: "fixed-small-size" %> <b>Piggy</b>•B</a><% end %>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarOptions" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarOptions">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <%= link_to t('.my_piggy_banks'), piggy_banks_path, class: "nav-link btn-sm mt-2 mb-2" %>
+                  <%= link_to t('.my_piggy_banks'), piggy_banks_path, class: "nav-link btn-sm mt-1 mb-1" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to t('.create_piggy_bank'), new_piggy_bank_path, class: "nav-link btn-sm mt-2 mb-2" %>
+                  <%= link_to t('.create_piggy_bank'), new_piggy_bank_path, class: "nav-link btn-sm mt-1 mb-1" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to t('.check_api_documentation'), 'https://goo.gl/3bFqXL', class: "nav-link btn-sm mt-2 mb-2", target: "_blank" %>
+                  <%= link_to t('.check_api_documentation'), 'https://goo.gl/3bFqXL', class: "nav-link btn-sm mt-1 mb-1", target: "_blank" %>
                 </li>
               </ul>
               <span class="navbat-text">
-                <%= link_to t('.logout'), '/logout', class: "btn mt-2 mb-2 btn-sm btn-block btn-outline-secondary" %>
+                <%= link_to t('.logout'), '/logout', class: "btn mt-1 mb-1 btn-sm btn-block btn-outline-secondary" %>
               </span>
             </div>
           <% end %>
