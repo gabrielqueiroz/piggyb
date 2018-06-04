@@ -51,7 +51,7 @@
                 </select>
               </div>
               <div class="form-group col-md-9">
-                <%= form.text_field :balance, class: "form-control", value: "0.0", type: "number", required: true  %>
+                <%= form.text_field :balance, class: "form-control", value: "0.0", type: "number", step: ".01", required: true  %>
                 <small id="balanceHelp" class="form-text text-muted"><%= t '.balance_help' %></small>
               </div>
             </div>
